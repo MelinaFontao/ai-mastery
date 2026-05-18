@@ -1,4 +1,4 @@
-const CACHE = 'ai-mastery-v1';
+const CACHE = 'ai-mastery-v2';
 const FILES = [
   '/',
   '/index.html',
@@ -15,9 +15,9 @@ const FILES = [
   '/modules/m5b.html',
   '/modules/m6a.html',
   '/modules/m6b.html',
-  '/modules/claude.html',
   '/modules/m7a.html',
   '/modules/m7b.html',
+  '/modules/claude.html',
   '/modules/m8a.html',
   '/modules/m8b.html',
   '/modules/m9a.html',
@@ -25,7 +25,9 @@ const FILES = [
   '/modules/m10a.html',
   '/modules/m10b.html',
   '/modules/m11a.html',
-  '/modules/m11b.html'
+  '/modules/m11b.html',
+  '/modules/m12a.html',
+  '/modules/m12b.html'
 ];
 
 self.addEventListener('install', e => {

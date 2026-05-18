@@ -87,7 +87,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="hero">
       <div class="hero-ico">🧠</div>
       <div class="hero-title">AI Mastery</div>
-      <div class="hero-sub">11 módulos · 9 roles · herramientas · 5 industrias</div>
+      <div class="hero-sub">12 módulos · historia · roles · herramientas · industrias</div>
       <div class="hero-stats">
         <div class="hstat"><div class="hstat-n" id="h-xp">0</div><div class="hstat-l">XP Total</div></div>
         <div class="hstat"><div class="hstat-n" id="h-parts">0/23</div><div class="hstat-l">Partes</div></div>
@@ -127,31 +127,52 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <script>
 // ── DATOS ─────────────────────────────────────────────
 const MODS=[
-  {id:"m1",icon:"🧠",title:"¿Qué es la IA?",bg:"linear-gradient(135deg,#1a1a2e,#3C3489)",group:"core",
+  {id:"m1",icon:"📜",title:"Historia de la IA",bg:"linear-gradient(135deg,#1a0a2e,#4a1a6e)",group:"intro",
    parts:[{key:"aim_m1a",lbl:"A",file:"modules/m1a.html",maxLv:15,maxXp:325},{key:"aim_m1b",lbl:"B",file:"modules/m1b.html",maxLv:10,maxXp:225}]},
-  {id:"m2",icon:"✍️",title:"Prompts Efectivos",bg:"linear-gradient(135deg,#042C53,#0C447C)",group:"core",
+  {id:"m2",icon:"🧠",title:"¿Qué es la IA?",bg:"linear-gradient(135deg,#1a1a2e,#3C3489)",group:"core",
    parts:[{key:"aim_m2a",lbl:"A",file:"modules/m2a.html",maxLv:15,maxXp:325},{key:"aim_m2b",lbl:"B",file:"modules/m2b.html",maxLv:10,maxXp:225}]},
-  {id:"m3",icon:"🔬",title:"Tipos de Modelos",bg:"linear-gradient(135deg,#04342C,#085041)",group:"core",
+  {id:"m3",icon:"✍️",title:"Prompts Efectivos",bg:"linear-gradient(135deg,#042C53,#0C447C)",group:"core",
    parts:[{key:"aim_m3a",lbl:"A",file:"modules/m3a.html",maxLv:15,maxXp:325},{key:"aim_m3b",lbl:"B",file:"modules/m3b.html",maxLv:10,maxXp:225}]},
-  {id:"m4",icon:"💼",title:"IA en tu Trabajo",bg:"linear-gradient(135deg,#4B1528,#72243E)",group:"core",
+  {id:"m4",icon:"🔬",title:"Tipos de Modelos",bg:"linear-gradient(135deg,#04342C,#085041)",group:"core",
    parts:[{key:"aim_m4a",lbl:"A",file:"modules/m4a.html",maxLv:15,maxXp:325},{key:"aim_m4b",lbl:"B",file:"modules/m4b.html",maxLv:10,maxXp:225}]},
-  {id:"m5",icon:"🤖",title:"Agentes de IA",bg:"linear-gradient(135deg,#173404,#27500A)",group:"core",
+  {id:"m5",icon:"💼",title:"IA en tu Trabajo",bg:"linear-gradient(135deg,#4B1528,#72243E)",group:"core",
    parts:[{key:"aim_m5a",lbl:"A",file:"modules/m5a.html",maxLv:15,maxXp:325},{key:"aim_m5b",lbl:"B",file:"modules/m5b.html",maxLv:10,maxXp:225}]},
-  {id:"m6",icon:"⚡",title:"Skills de IA",bg:"linear-gradient(135deg,#26215C,#3C3489)",group:"core",
+  {id:"m6",icon:"🤖",title:"Agentes de IA",bg:"linear-gradient(135deg,#173404,#27500A)",group:"core",
    parts:[{key:"aim_m6a",lbl:"A",file:"modules/m6a.html",maxLv:15,maxXp:325},{key:"aim_m6b",lbl:"B",file:"modules/m6b.html",maxLv:10,maxXp:225}]},
+  {id:"m7",icon:"⚡",title:"Skills de IA",bg:"linear-gradient(135deg,#26215C,#3C3489)",group:"core",
+   parts:[{key:"aim_m7a",lbl:"A",file:"modules/m7a.html",maxLv:15,maxXp:325},{key:"aim_m7b",lbl:"B",file:"modules/m7b.html",maxLv:10,maxXp:225}]},
   {id:"mc",icon:"🤖",title:"Modelos de Claude",bg:"linear-gradient(160deg,#0f0f1a,#1a1040)",group:"special",
    parts:[{key:"aim_claude_mod",lbl:"Módulo",file:"modules/claude.html",maxLv:25,maxXp:550}]},
-  {id:"m7",icon:"🚀",title:"Roles del Futuro",bg:"linear-gradient(135deg,#2D1B00,#7A3A0A)",group:"roles-b",
-   parts:[{key:"aim_m7a",lbl:"A",file:"modules/m7a.html",maxLv:15,maxXp:325},{key:"aim_m7b",lbl:"B",file:"modules/m7b.html",maxLv:10,maxXp:225}]},
-  {id:"m8",icon:"🔭",title:"Roles Técnicos",bg:"linear-gradient(135deg,#071A2E,#0C3A6B)",group:"roles-a",
+  {id:"m8",icon:"🚀",title:"Roles del Futuro",bg:"linear-gradient(135deg,#2D1B00,#7A3A0A)",group:"roles-b",
    parts:[{key:"aim_m8a",lbl:"A",file:"modules/m8a.html",maxLv:15,maxXp:325},{key:"aim_m8b",lbl:"B",file:"modules/m8b.html",maxLv:10,maxXp:225}]},
-  {id:"m9",icon:"🛠️",title:"Herramientas Labs",bg:"linear-gradient(135deg,#1a0030,#6B1A55)",group:"labs",
+  {id:"m9",icon:"🔭",title:"Roles Técnicos",bg:"linear-gradient(135deg,#071A2E,#0C3A6B)",group:"roles-a",
    parts:[{key:"aim_m9a",lbl:"A",file:"modules/m9a.html",maxLv:15,maxXp:325},{key:"aim_m9b",lbl:"B",file:"modules/m9b.html",maxLv:10,maxXp:225}]},
-  {id:"m10",icon:"🌐",title:"Herramientas Externas",bg:"linear-gradient(135deg,#061a10,#065038)",group:"ext",
+  {id:"m10",icon:"🛠️",title:"Herramientas Labs",bg:"linear-gradient(135deg,#1a0030,#6B1A55)",group:"labs",
    parts:[{key:"aim_m10a",lbl:"A",file:"modules/m10a.html",maxLv:15,maxXp:325},{key:"aim_m10b",lbl:"B",file:"modules/m10b.html",maxLv:10,maxXp:225}]},
-  {id:"m11",icon:"🏭",title:"IA por Industria",bg:"linear-gradient(135deg,#1a0e00,#7A3A0A)",group:"ind",
-   parts:[{key:"aim_m11a",lbl:"A",file:"modules/m11a.html",maxLv:15,maxXp:325},{key:"aim_m11b",lbl:"B",file:"modules/m11b.html",maxLv:10,maxXp:225}]}
+  {id:"m11",icon:"🌐",title:"Herramientas Externas",bg:"linear-gradient(135deg,#061a10,#065038)",group:"ext",
+   parts:[{key:"aim_m11a",lbl:"A",file:"modules/m11a.html",maxLv:15,maxXp:325},{key:"aim_m11b",lbl:"B",file:"modules/m11b.html",maxLv:10,maxXp:225}]},
+  {id:"m12",icon:"🏭",title:"IA por Industria",bg:"linear-gradient(135deg,#1a0e00,#7A3A0A)",group:"ind",
+   parts:[{key:"aim_m12a",lbl:"A",file:"modules/m12a.html",maxLv:15,maxXp:325},{key:"aim_m12b",lbl:"B",file:"modules/m12b.html",maxLv:10,maxXp:225}]}
 ];
+
+// Secuencia de desbloqueo: completar parte N habilita parte N+1
+const UNLOCK_ORDER=[
+  "aim_m1a","aim_m1b",
+  "aim_m2a","aim_m2b",
+  "aim_m3a","aim_m3b",
+  "aim_m4a","aim_m4b",
+  "aim_m5a","aim_m5b",
+  "aim_m6a","aim_m6b",
+  "aim_m7a","aim_m7b",
+  "aim_claude_mod",
+  "aim_m8a","aim_m8b",
+  "aim_m9a","aim_m9b",
+  "aim_m10a","aim_m10b",
+  "aim_m11a","aim_m11b",
+  "aim_m12a","aim_m12b"
+];
+
+const ALL_PARTS=MODS.flatMap(m=>m.parts);
 
 const LEVELS=[
   {xp:0,lbl:"Principiante"},{xp:500,lbl:"Explorador"},{xp:1200,lbl:"Practicante"},
@@ -160,13 +181,14 @@ const LEVELS=[
 ];
 
 const SECTIONS=[
-  {label:"FUNDAMENTOS",badge:"gb-core",text:"M1–M6",ids:["m1","m2","m3","m4","m5","m6"]},
+  {label:"INTRODUCCIÓN",badge:"gb-core",text:"M1 · Historia",ids:["m1"]},
+  {label:"FUNDAMENTOS",badge:"gb-core",text:"M2–M7",ids:["m2","m3","m4","m5","m6","m7"]},
   {label:"ESPECIAL",badge:"gb-core",text:"Claude",ids:["mc"]},
-  {label:"ROLES ACCESIBLES",badge:"gb-b",text:"Grupo B · M7",ids:["m7"]},
-  {label:"ROLES TÉCNICOS",badge:"gb-a",text:"Grupo A · M8",ids:["m8"]},
-  {label:"HERRAMIENTAS LABS",badge:"gb-labs",text:"M9",ids:["m9"]},
-  {label:"HERRAMIENTAS EXTERNAS",badge:"gb-ext",text:"M10",ids:["m10"]},
-  {label:"IA POR INDUSTRIA",badge:"gb-ind",text:"M11 · Final",ids:["m11"]}
+  {label:"ROLES ACCESIBLES",badge:"gb-b",text:"Grupo B · M8",ids:["m8"]},
+  {label:"ROLES TÉCNICOS",badge:"gb-a",text:"Grupo A · M9",ids:["m9"]},
+  {label:"HERRAMIENTAS LABS",badge:"gb-labs",text:"M10",ids:["m10"]},
+  {label:"HERRAMIENTAS EXTERNAS",badge:"gb-ext",text:"M11",ids:["m11"]},
+  {label:"IA POR INDUSTRIA",badge:"gb-ind",text:"M12 · Final",ids:["m12"]}
 ];
 
 // ── HELPERS ───────────────────────────────────────────
@@ -182,8 +204,28 @@ function readPart(key,maxLv){
 function getLv(xp){return LEVELS.reduce((a,l)=>xp>=l.xp?l:a,LEVELS[0]);}
 function getNextLv(xp){return LEVELS.find(l=>l.xp>xp)||LEVELS[LEVELS.length-1];}
 
+function isPartUnlocked(key){
+  const idx=UNLOCK_ORDER.indexOf(key);
+  if(idx<=0)return true;
+  const prevKey=UNLOCK_ORDER[idx-1];
+  const prevPart=ALL_PARTS.find(p=>p.key===prevKey);
+  if(!prevPart)return true;
+  return readPart(prevKey,prevPart.maxLv).complete;
+}
+
+function saveUnlockedList(){
+  const ul=UNLOCK_ORDER.filter((_,i)=>{
+    if(i===0)return true;
+    const prevKey=UNLOCK_ORDER[i-1];
+    const prevPart=ALL_PARTS.find(p=>p.key===prevKey);
+    return prevPart?readPart(prevKey,prevPart.maxLv).complete:true;
+  });
+  try{localStorage.setItem("aim_unlocked",JSON.stringify(ul));}catch(e){}
+}
+
 // ── RENDER HUB ────────────────────────────────────────
 function renderHub(){
+  saveUnlockedList();
   let totalXP=0,partsDone=0;
   const totalParts=MODS.reduce((a,m)=>a+m.parts.length,0);
   MODS.forEach(m=>m.parts.forEach(p=>{const d=readPart(p.key,p.maxLv);totalXP+=d.xp;if(d.complete)partsDone++;}));
@@ -216,23 +258,27 @@ function renderHub(){
       const allDone=pd.every(d=>d.complete),anyProg=pd.some(d=>d.done>0);
       const earnedXP=pd.reduce((a,d)=>a+d.xp,0);
       const maxXP=mod.parts.reduce((a,p)=>a+p.maxXp,0);
-      const cls=allDone?"done":anyProg?"inprog":"";
+      const modLocked=!isPartUnlocked(mod.parts[0].key);
+      const cls=modLocked?"":allDone?"done":anyProg?"inprog":"";
 
       const partsHtml=mod.parts.map((p,i)=>{
         const d=pd[i];
-        const c=d.complete?"pp-done":d.done>0?"pp-prog":"pp-lock";
-        const ic=d.complete?"✓":d.done>0?"▶":"🔒";
+        const partLocked=!isPartUnlocked(p.key);
+        const c=partLocked?"pp-lock":d.complete?"pp-done":d.done>0?"pp-prog":"pp-prog";
+        const ic=partLocked?"🔒":d.complete?"✓":d.done>0?"▶":"▶";
         const lbl=mod.parts.length===1?"Módulo":p.lbl;
         const detail=!d.complete&&d.done>0?` (${d.done}/${p.maxLv})`:"";
-        return`<span class="pp ${c}" onclick="event.stopPropagation();openMod('${p.file}','${mod.title} — Parte ${p.lbl}')">${ic} ${lbl}${detail}</span>`;
+        if(partLocked)return`<span class="pp ${c}">${ic} ${lbl}</span>`;
+        return`<span class="pp ${c}" onclick="event.stopPropagation();openMod('${p.file}','${mod.title} — Parte ${p.lbl}','${p.key}')">${ic} ${lbl}${detail}</span>`;
       }).join("");
 
-      el.innerHTML+=`<div class="mcard ${cls}" onclick="openMod('${mod.parts[0].file}','${mod.title}')">
+      const cardClick=modLocked?"":"openMod('"+mod.parts[0].file+"','"+mod.title+"','"+mod.parts[0].key+"')";
+      el.innerHTML+=`<div class="mcard ${cls}" ${cardClick?`onclick="${cardClick}"`:"style='opacity:.5;cursor:default'"}>
         <div class="mhdr">
-          <div class="mico" style="background:${mod.bg}">${mod.icon}</div>
+          <div class="mico" style="background:${mod.bg}">${modLocked?"🔒":mod.icon}</div>
           <div class="minfo">
             <div class="mtitle">${mod.title}</div>
-            <div class="msub">${mod.parts.length===1?"1 parte · 5 juegos":"2 partes · 5 niveles/juego"} · teoría incluida</div>
+            <div class="msub">${modLocked?"Completá el módulo anterior para desbloquear":mod.parts.length===1?"1 parte · 5 juegos":"2 partes · 5 niveles/juego"} · teoría incluida</div>
             <div class="mparts">${partsHtml}</div>
           </div>
           <div class="mxp">${earnedXP}/${maxXP}<br><small>XP</small></div>
@@ -243,7 +289,8 @@ function renderHub(){
 }
 
 // ── NAVEGACIÓN ────────────────────────────────────────
-function openMod(file, title){
+function openMod(file,title,key){
+  if(key&&!isPartUnlocked(key))return;
   document.getElementById("mod-nav-title").textContent=title;
   document.getElementById("mod-frame").src=file;
   document.getElementById("view-hub").classList.remove("active");
@@ -257,6 +304,9 @@ function backToHub(){
   document.getElementById("view-hub").classList.add("active");
   renderHub();
 }
+
+// Escuchar mensaje "back" desde módulos bloqueados abiertos directamente
+window.addEventListener("message",e=>{if(e.data&&e.data.type==="back")backToHub();});
 
 // ── SERVICE WORKER ────────────────────────────────────
 if('serviceWorker' in navigator){
