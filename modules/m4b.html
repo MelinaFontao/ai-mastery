@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>IA en tu Trabajo — Parte B — AI Mastery</title>
+<style>:root{--ac:#72243E;--ac-l:#FAE8F1;--ac-d:#4B1528}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#fff}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;display:flex;flex-direction:column}
+#app{max-width:430px;width:100%;margin:0 auto;flex:1;display:flex;flex-direction:column;background:#fff}
+.scr{display:none;flex-direction:column;flex:1}.scr.active{display:flex}
+.hero{background:linear-gradient(160deg,#4B1528,#72243E);padding:1.5rem 1.25rem 1.25rem;text-align:center}
+.hero h1{font-size:20px;font-weight:500;color:#fff;margin-top:.5rem}
+.hero p{font-size:12px;color:rgba(255,255,255,.65);margin-top:4px}
+.htag{display:inline-block;margin-top:10px;background:rgba(255,255,255,.12);border-radius:20px;padding:4px 14px;font-size:11px;color:rgba(255,255,255,.8)}
+.xw{padding:8px 1.25rem;border-bottom:.5px solid #e5e7eb}
+.xr{display:flex;justify-content:space-between;font-size:11px;color:#6b7280;margin-bottom:4px}
+.xb{height:6px;background:#f3f4f6;border-radius:3px;overflow:hidden}
+.xbf{height:100%;background:var(--ac);border-radius:3px;transition:width .5s}
+.lv-banner{padding:8px 1.25rem;background:#FAEEDA;border-bottom:.5px solid #e5e7eb;display:flex;align-items:center;gap:8px}
+.lvt{font-size:12px;color:#633806;font-weight:500}.lvs{font-size:10px;color:#BA7517}
+.gw{padding:1rem 1.25rem;overflow-y:auto;flex:1}
+.slbl{font-size:10px;font-weight:500;color:#6b7280;letter-spacing:.04em;margin-bottom:10px}
+.gcard{border-radius:10px;border:.5px solid #e5e7eb;margin-bottom:8px;overflow:hidden}
+.gch{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;background:#fff}
+.gch:hover{background:#f9fafb}
+.gco{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.gi{flex:1}.gtn{font-size:12px;font-weight:500;color:#111}.gts{font-size:10px;color:#6b7280;margin-top:2px}
+.gpips{display:flex;gap:3px;margin-top:4px}
+.gpip{width:18px;height:4px;border-radius:2px;background:#f3f4f6}
+.gpip.done{background:#1D9E75}.gpip.act{background:var(--ac)}
+.gcv{font-size:11px;color:#6b7280}
+.lvlist{border-top:.5px solid #e5e7eb;background:#f9fafb}
+.lvrow{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:.5px solid #e5e7eb;cursor:pointer}
+.lvrow:last-child{border-bottom:none}.lvrow:hover:not(.lk){background:#fff}.lk{opacity:.38;cursor:default}
+.lvnum{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0}
+.nd{background:#1D9E75;color:#fff}.na{background:var(--ac);color:#fff}.nl{background:#fff;border:.5px solid #e5e7eb;color:#6b7280}
+.lvi{flex:1}.lvn2{font-size:11px;font-weight:500;color:#111}.lvd{font-size:10px;color:#6b7280;margin-top:1px}
+.lvbg{font-size:10px;padding:2px 6px;border-radius:20px}
+.bdo{background:#E1F5EE;color:#085041}.bav{background:var(--ac-l);color:var(--ac-d)}.blk{background:#f3f4f6;color:#6b7280}
+.thpill{display:inline-flex;align-items:center;gap:4px;font-size:9px;background:var(--ac-l);color:var(--ac-d);border-radius:8px;padding:2px 6px;margin-top:3px}
+.thdr{padding:.875rem 1.25rem;border-bottom:.5px solid #e5e7eb;display:flex;align-items:center;gap:10px}
+.bbtn{background:none;border:none;cursor:pointer;font-size:17px;color:#6b7280;padding:4px;border-radius:6px}
+.thdr-i{flex:1}.thdr-t{font-size:11px;font-weight:500;color:#111}.thdr-s{font-size:10px;color:#6b7280}
+.tbody{flex:1;overflow-y:auto}
+.tvis{padding:1.75rem 1.25rem 1.25rem;text-align:center}
+.tvis-ico{font-size:48px;display:block;margin-bottom:.75rem}
+.tvis-title{font-size:20px;font-weight:500;margin-bottom:4px}.tvis-sub{font-size:12px;opacity:.7}
+.tvis-chips{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.tvis-chip{font-size:11px;padding:4px 12px;border-radius:20px;font-weight:500}
+.tcards{padding:1rem 1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.tc{background:#f9fafb;border-radius:10px;padding:.875rem}
+.tc-lbl{font-size:9px;font-weight:500;color:#6b7280;letter-spacing:.05em;margin-bottom:5px}
+.tc-txt{font-size:12px;color:#6b7280;line-height:1.7}.tc-txt strong{color:#111;font-weight:500}
+.eg{background:#fff;border-radius:8px;padding:10px 12px;border-left:3px solid var(--ac)}
+.eg-l{font-size:9px;font-weight:500;color:var(--ac-d);letter-spacing:.05em;margin-bottom:3px}
+.eg-t{font-size:12px;color:#6b7280;line-height:1.6}
+.tip{display:flex;align-items:flex-start;gap:7px;background:#FAEEDA;border-radius:8px;padding:9px 12px;font-size:12px;color:#633806;line-height:1.5}
+.start-btn{margin:0 1.25rem 1.25rem;padding:13px;background:var(--ac);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;flex-shrink:0}
+.ghdr{padding:.875rem 1.25rem;border-bottom:.5px solid #e5e7eb;display:flex;align-items:center;gap:10px}
+.ghi{flex:1}.ght{font-size:11px;font-weight:500;color:#111}.ghs{font-size:10px;color:#6b7280}
+.gpb{height:4px;background:#f3f4f6;border-radius:2px;overflow:hidden;margin-top:3px}
+.gpbf{height:100%;background:var(--ac);border-radius:2px;transition:width .3s}
+.lvsr{display:flex;gap:2px}.lf{font-size:12px}
+.gbody{flex:1;padding:1.25rem;overflow-y:auto;display:flex;flex-direction:column;gap:.75rem}
+.tbadge{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-bottom:3px}
+.tbq{background:#FAEEDA;color:#633806}.tbf{background:#EEEDFE;color:#3C3489}.tbo{background:#E1F5EE;color:#085041}
+.tbtf{background:#FCEBEB;color:#791F1F}.tbb{background:#EAF3DE;color:#27500A}
+.gtitle{font-size:14px;font-weight:500;color:#111;line-height:1.4}
+.dtag{display:inline-block;font-size:9px;padding:1px 5px;border-radius:20px}
+.d1{background:#EAF3DE;color:#27500A}.d2{background:#E6F1FB;color:#0C447C}.d3{background:#FAEEDA;color:#633806}.d4{background:#FAECE7;color:#712B13}.d5{background:#FCEBEB;color:#791F1F}
+.opt{width:100%;text-align:left;padding:9px 11px;border-radius:8px;border:.5px solid #e5e7eb;background:#fff;font-size:12px;color:#111;cursor:pointer;transition:all .15s;line-height:1.4;margin-top:5px}
+.opt:hover:not(:disabled){border-color:var(--ac);background:var(--ac-l);color:var(--ac-d)}
+.opt.correct{border-color:#1D9E75;background:#E1F5EE;color:#085041}.opt.wrong{border-color:#D85A30;background:#FAECE7;color:#712B13}
+.fb{padding:9px 11px;border-radius:8px;font-size:11px;line-height:1.6;display:none;gap:6px;align-items:flex-start}
+.fbok{background:#E1F5EE;color:#085041;display:flex}.fbno{background:#FAECE7;color:#712B13;display:flex}
+.nbtn{width:100%;padding:12px;background:var(--ac);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;margin-top:auto}
+.nbtn:disabled{opacity:.3;cursor:default}
+.cbtn{width:100%;padding:12px;background:#378ADD;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;margin-top:auto}
+.fpr{font-size:12px;line-height:2.4;color:#111;background:#f9fafb;border-radius:8px;padding:10px}
+.binp{display:inline-block;min-width:72px;border:none;border-bottom:2px solid var(--ac);background:transparent;font-size:11px;color:var(--ac-d);outline:none;padding:0 3px;text-align:center;cursor:pointer}
+.binp.correct{border-bottom-color:#1D9E75;color:#085041}.binp.wrong{border-bottom-color:#D85A30;color:#712B13}
+.wbank{display:flex;flex-wrap:wrap;gap:5px}
+.wchip{padding:4px 9px;border-radius:20px;border:.5px solid var(--ac);background:var(--ac-l);color:var(--ac-d);font-size:11px;cursor:pointer;user-select:none}
+.wchip:hover{background:var(--ac);color:#fff}.wchip.used{opacity:.3;cursor:default;pointer-events:none}
+.olist{display:flex;flex-direction:column;gap:5px}
+.oitem{display:flex;align-items:center;gap:7px;padding:9px 11px;border-radius:8px;border:.5px solid #e5e7eb;background:#fff;cursor:grab;user-select:none;touch-action:none}
+.oitem.dragging{opacity:.4}.oitem.correct{border-color:#1D9E75;background:#E1F5EE}.oitem.wrong{border-color:#D85A30;background:#FAECE7}
+.onum{width:20px;height:20px;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:#6b7280;flex-shrink:0}
+.otxt{font-size:11px;color:#111;flex:1;line-height:1.4}
+.tftimer{height:5px;background:#f3f4f6;border-radius:3px;overflow:hidden}
+.tffill{height:100%;border-radius:3px;transition:width .1s linear}
+.tfstmt{font-size:13px;font-weight:500;color:#111;line-height:1.5;text-align:center;padding:1.25rem;background:#f9fafb;border-radius:8px;min-height:80px;display:flex;align-items:center;justify-content:center}
+.tfbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tfbtn{padding:13px;border-radius:8px;border:.5px solid #e5e7eb;background:#fff;font-size:14px;font-weight:500;cursor:pointer;transition:all .15s}
+.tfbtn.tv:hover:not(:disabled){background:#E1F5EE;border-color:#1D9E75;color:#085041}
+.tfbtn.tf2:hover:not(:disabled){background:#FAECE7;border-color:#D85A30;color:#712B13}
+.tfbtn.correct{background:#E1F5EE;border-color:#1D9E75;color:#085041}.tfbtn.wrong{background:#FAECE7;border-color:#D85A30;color:#712B13}
+.tfsc{text-align:center;font-size:11px;color:#6b7280}
+.bcanvas{display:flex;flex-direction:column;gap:5px;padding:8px;border:2px dashed #e5e7eb;border-radius:8px}
+.bslot{padding:7px 10px;border-radius:6px;border:.5px dashed #d1d5db;background:#f9fafb;font-size:11px;color:#6b7280;text-align:center;min-height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;line-height:1.3}
+.bslot.filled{background:var(--ac-l);border-color:var(--ac);color:var(--ac-d);border-style:solid}
+.bslot.correct{background:#E1F5EE;border-color:#1D9E75;color:#085041;border-style:solid}
+.bslot.wrong{background:#FAECE7;border-color:#D85A30;color:#712B13;border-style:solid}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.cchip{padding:7px 9px;border-radius:7px;border:.5px solid #e5e7eb;background:#fff;font-size:10px;color:#111;cursor:pointer;transition:all .15s;text-align:center;line-height:1.3}
+.cchip:hover{border-color:var(--ac);background:var(--ac-l);color:var(--ac-d)}.cchip.used{opacity:.3;cursor:default;pointer-events:none}
+.escr{padding:1.5rem 1.25rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.75rem;flex:1;justify-content:center}
+.eico{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px}
+.ewin{background:#E1F5EE}.elose{background:#FAECE7}
+.etit{font-size:19px;font-weight:500}.edesc{font-size:12px;color:#6b7280;line-height:1.6;max-width:300px}
+.xpp{background:var(--ac-l);color:var(--ac-d);padding:9px 18px;border-radius:8px;font-size:14px;font-weight:500}
+.sr{display:flex;gap:8px;width:100%}
+.sc2{flex:1;background:#f9fafb;border-radius:8px;padding:9px;text-align:center}
+.sn{font-size:18px;font-weight:500}.sl{font-size:10px;color:#6b7280;margin-top:2px}
+.upill{background:#E1F5EE;border:1px solid #1D9E75;border-radius:8px;padding:9px 14px;font-size:11px;color:#085041;width:100%;text-align:center;font-weight:500}
+.hbox{background:#FAECE7;border-radius:8px;padding:10px;font-size:11px;color:#712B13;line-height:1.6;width:100%}
+.wbox{background:#FAEEDA;border-radius:8px;padding:10px;font-size:11px;color:#633806;line-height:1.6;width:100%;text-align:center}</style>
+</head>
+<body>
+<div id="app">
+<div class="scr active" id="s-home">
+  <div class="hero"><div style="font-size:44px">💼</div><h1>IA en tu Trabajo — Parte B</h1><p>Módulo 4B · V/F · Construir · 5 niveles</p><span class="htag">📖 Teoría visual antes de cada nivel</span></div>
+  <div class="xw"><div class="xr"><span id="lv-lbl">Progreso: 0/10 niveles</span><span id="xp-lbl">0 XP</span></div><div class="xb"><div class="xbf" id="xpf" style="width:0%"></div></div></div>
+  <div class="lv-banner"><div style="font-size:16px">🏆</div><div><div class="lvt" id="mlv-lbl">Nivel desbloqueado: 1</div><div class="lvs" id="mlv-sub">Completá los 2 juegos del nivel 1 para avanzar</div></div></div>
+  <div class="gw"><div class="slbl">MINI-JUEGOS — IA EN TU TRABAJO — PARTE B</div><div id="glist"></div></div>
+</div>
+<div class="scr" id="s-theory">
+  <div class="thdr"><button class="bbtn" onclick="goHome()">←</button><div class="thdr-i"><div class="thdr-t" id="th-title">Teoría · Nivel 1</div><div class="thdr-s">Leé antes de jugar</div></div></div>
+  <div class="tbody" id="tbody"></div>
+  <button class="start-btn" id="start-btn">¡Entendido! Empezar →</button>
+</div>
+<div class="scr" id="s-game">
+  <div class="ghdr"><button class="bbtn" onclick="goToTheory()">←</button><div class="ghi"><div class="ght" id="g-tit">V/F · Nivel 1</div><div class="ghs" id="g-sub">Pregunta 1 de 3</div><div class="gpb"><div class="gpbf" id="g-prog" style="width:0%"></div></div></div><div class="lvsr" id="lvsr"></div></div>
+  <div class="gbody" id="gbody"></div>
+</div>
+<div class="scr" id="s-win">
+  <div class="escr">
+    <div class="eico ewin" id="w-ico">⭐</div><h2 class="etit" id="w-tit">¡Nivel completado!</h2><p class="edesc" id="w-desc"></p>
+    <div class="xpp" id="w-xp">+15 XP</div><div id="w-unlock" style="width:100%"></div>
+    <div class="sr"><div class="sc2"><div class="sn" id="w-cor">0/0</div><div class="sl">Correctas</div></div><div class="sc2"><div class="sn" id="w-acc">0%</div><div class="sl">Precisión</div></div><div class="sc2"><div class="sn" id="w-tot">0</div><div class="sl">XP total</div></div></div>
+    <button class="nbtn" id="w-btn">Seguir →</button>
+  </div>
+</div>
+<div class="scr" id="s-fail">
+  <div class="escr">
+    <div class="eico elose">💔</div><h2 class="etit">Sin vidas</h2><p class="edesc" id="f-desc"></p>
+    <div class="wbox" id="f-warn"></div><div class="hbox" id="f-hint"></div>
+    <button class="nbtn" onclick="goToTheory()">📖 Repasar teoría</button>
+    <button class="nbtn" style="background:#D85A30;margin-top:0" onclick="retryLv()">🔄 Reintentar</button>
+    <button class="nbtn" style="background:#f3f4f6;color:#111;margin-top:0" onclick="goHome()">← Módulo</button>
+  </div>
+</div>
+</div>
+<script>
+const TH={
+1:{bg:"linear-gradient(135deg,#4B1528,#72243E)",ico:"💼",title:"Stack de IA — Aplicado",sub:"Los casos reales por rol y sector",chips:[{t:"Roles",bg:"#FAE8F1",c:"#4B1528"},{t:"Casos reales",bg:"#FAE8F1",c:"#4B1528"},{t:"Ejemplos",bg:"#FAE8F1",c:"#4B1528"}],concept:"El stack de IA ideal varía según tu rol — no todos necesitan las mismas herramientas",text:"<strong>Por rol:</strong>\n\n<strong>PM / Estrategia:</strong> Claude (PRDs, análisis) + Perplexity (research) + Claude Design (wireframes)\n\n<strong>Developer:</strong> Cursor o Copilot (código) + Claude Code (refactoring) + Claude (documentación)\n\n<strong>Marketing:</strong> Claude (copy) + Midjourney (imágenes) + Runway (video) + Perplexity (tendencias)\n\n<strong>Legal / Finanzas:</strong> NotebookLM (contratos propios) + Perplexity (jurisprudencia reciente) + Claude (redacción)\n\n<strong>Educación:</strong> Claude (materiales) + NotebookLM (podcast de módulos) + ElevenLabs (narración)\n\n<strong>Salud:</strong> Whisper (transcripción clínica) + Claude (resumen) + NotebookLM (literatura médica)",eg:"Una consultora de estrategia usa: Perplexity para investigar el sector del cliente antes de la reunión, Claude para generar el primer draft de la presentación con los datos que ella provee, NotebookLM para analizar los reportes anuales del cliente, y Claude Design para el diseño final de las slides.",tip:"El stack mínimo viable para cualquier rol es: (1) un LLM general (Claude) para el 80% de las tareas, (2) una herramienta de búsqueda actualizada (Perplexity) para información reciente, (3) una herramienta especializada en tu tarea más frecuente (Cursor si sos developer, NotebookLM si analizás muchos docs). Tres herramientas bien usadas > diez usadas superficialmente."},
+2:{bg:"linear-gradient(135deg,#4B1528,#72243E)",ico:"⚡",title:"Automatización sin Código",sub:"Workflows automáticos con herramientas no-code",chips:[{t:"No-code",bg:"#FAE8F1",c:"#4B1528"},{t:"Zapier",bg:"#FAE8F1",c:"#4B1528"},{t:"Make",bg:"#FAE8F1",c:"#4B1528"}],concept:"No necesitás saber programar para automatizar workflows con IA",text:"<strong>Herramientas no-code para automatización con IA:</strong>\n\n<strong>Zapier + Claude:</strong> cualquier trigger (nuevo email, formulario, Slack) → Claude procesa → output a donde querés\n\n<strong>Make (ex-Integromat):</strong> más potente que Zapier, workflows visuales complejos\n\n<strong>Claude Cowork (M9):</strong> workflows recurrentes con memoria persistente y plugins\n\n<strong>Ejemplos de automatizaciones prácticas:</strong>\n• Nuevo formulario de contacto → Claude califica el lead → envía email personalizado\n• Menciones de tu empresa en Twitter → Claude analiza sentimiento → alerta en Slack\n• Nueva tarea en Jira → Claude genera descripción técnica → asigna automáticamente\n• Reunión termina → Whisper transcribe → Claude genera resumen → envía al equipo",eg:"Un equipo de ventas automatiza la calificación de leads: cada nuevo lead del formulario web pasa por Claude (que analiza la industria, tamaño y necesidad) y recibe un score 1-10 con justificación. El equipo solo toca los leads con score >7. El tiempo de respuesta a leads calificados bajó de 4 horas a 10 minutos.",tip:"El mejor punto de entrada para automatización no-code es identificar una tarea que: (1) recibís inputs de afuera (email, formulario, mensaje), (2) siempre producís el mismo tipo de output (respuesta, documento, alerta), (3) hacés manualmente más de 5 veces por día. Ese es tu primer candidato para automatización con Zapier + Claude."},
+3:{bg:"linear-gradient(135deg,#4B1528,#72243E)",ico:"🎓",title:"Aprender con IA",sub:"IA como tutor personal y acelerador de aprendizaje",chips:[{t:"Tutor",bg:"#FAE8F1",c:"#4B1528"},{t:"Explicación",bg:"#FAE8F1",c:"#4B1528"},{t:"Práctica",bg:"#FAE8F1",c:"#4B1528"}],concept:"La IA es el mejor tutor que jamás existió — disponible 24/7, infinitamente paciente y personalizable",text:"<strong>Técnicas para aprender con IA:</strong>\n\n<strong>1. Explicación adaptativa:</strong> 'Explicame [concepto] como si fuera un [nivel de expertise]'\n'Usá una analogía con [dominio que conozco]'\n\n<strong>2. Práctica activa:</strong> 'Haceme preguntas sobre [tema] como si fuera un examen'\n'Generá 10 ejercicios de dificultad progresiva sobre [tema]'\n\n<strong>3. Aplicación inmediata:</strong> 'Cómo aplica [concepto] a mi trabajo como [rol]'\n\n<strong>4. Verificación de comprensión:</strong> 'Expliqué [concepto] así: [tu explicación]. ¿Qué está bien y qué está mal?'\n\n<strong>5. Conexión con conocimiento previo:</strong> 'Cómo se relaciona [nuevo concepto] con [lo que ya sé]'",eg:"Un abogado que quiere entender blockchain para asesorar a clientes crypto: 'Explicame blockchain usando analogías del derecho de propiedad y contratos'. Claude usa registros de propiedad, notarías y contratos con múltiples testigos para hacer el concepto inmediatamente accesible desde su framework mental ya instalado.",tip:"El truco más poderoso para aprender con IA: pedirle que te enseñe usando analogías de lo que ya sabés. Si sos médico, aprendé estadística con analogías de diagnóstico. Si sos abogado, aprendé tecnología con analogías de derecho. El aprendizaje es 5-10x más rápido cuando se conecta con frameworks mentales que ya tenés construidos."},
+4:{bg:"linear-gradient(135deg,#4B1528,#72243E)",ico:"🔍",title:"Pensamiento Crítico con IA",sub:"No delegar el juicio — amplificarlo",chips:[{t:"Verificar",bg:"#FAE8F1",c:"#4B1528"},{t:"Contrastar",bg:"#FAE8F1",c:"#4B1528"},{t:"Juicio propio",bg:"#FAE8F1",c:"#4B1528"}],concept:"La IA amplifica tu capacidad de análisis — no la reemplaza",text:"<strong>Las trampas del pensamiento con IA:</strong>\n\n<strong>1. Automation bias:</strong> aceptar el output de la IA sin cuestionarlo porque 'la IA debe saberlo'\n\n<strong>2. Deskilling:</strong> perder habilidades porque siempre delegás — si dejas de escribir, escribís peor\n\n<strong>3. Homogenización:</strong> todo el mundo con el mismo Claude generando contenido similar\n\n<strong>4. Alucinación no detectada:</strong> no verificar afirmaciones específicas\n\n<strong>Prácticas de pensamiento crítico con IA:</strong>\n• Formar tu opinión ANTES de preguntarle a Claude\n• Pedirle perspectivas alternativas a las que ya tiene\n• Verificar afirmaciones específicas con fuentes primarias\n• Usar la IA para desafiar tu análisis, no para confirmarlo",eg:"Un analista de inversiones forma su tesis sobre una empresa antes de consultarle a Claude. Luego le pide: 'Esta es mi tesis de inversión: [tesis]. Encontrá los 5 argumentos más fuertes en contra.' El contraste entre lo que pensó solo y los contraargumentos de la IA mejora su análisis final sin crear dependencia.",tip:"Para mantener el pensamiento crítico: nunca empieces una tarea compleja preguntándole a la IA primero. Forma tu posición, tu análisis, tu draft primero. Luego usá la IA para cuestionarlo, mejorarlo o encontrar lo que te perdiste. Si empezás por la IA, tu pensamiento se convierte en edición del de la IA — no en el tuyo."},
+5:{bg:"linear-gradient(135deg,#4B1528,#72243E)",ico:"📈",title:"Medir el Impacto de la IA",sub:"Cómo saber si la IA realmente mejora tu trabajo",chips:[{t:"Métricas",bg:"#FAE8F1",c:"#4B1528"},{t:"ROI",bg:"#FAE8F1",c:"#4B1528"},{t:"Calidad",bg:"#FAE8F1",c:"#4B1528"}],concept:"Sin medición, no sabés si la IA realmente te ayuda o solo te hace sentir productivo",text:"<strong>Métricas para medir el impacto de la IA:</strong>\n\n<strong>Eficiencia (fácil de medir):</strong>\n• Tiempo antes vs después en tareas específicas\n• Número de iteraciones hasta output aceptable\n• Porcentaje del output final que viene del draft de IA\n\n<strong>Calidad (más difícil de medir):</strong>\n• Tasa de aprobación del cliente/stakeholder\n• Errores por documento antes vs después\n• NPS de quien recibe el output\n\n<strong>Lo que NO medir:</strong>\n• Número de prompts usados (vanity metric)\n• Horas 'de IA en el stack' (irrelevante)\n\n<strong>La pregunta clave:</strong> '¿El output final es de mejor calidad o igual calidad en menos tiempo?'",eg:"Un equipo de contenido mide antes/después de adoptar IA: tiempo por artículo (4h → 2h), tasa de aprobación editorial (73% → 81%), y NPS del lector (4.2 → 4.5 sobre 5). Los tres indicadores mejoran. La conclusión: la IA no solo ahorra tiempo — también mejora la calidad porque el equipo dedica el tiempo liberado a revisar y profundizar más.",tip:"El mejor indicador para saber si la IA realmente te ayuda: ¿usarías la herramienta aunque no ahorrara tiempo? Si la respuesta es sí, es porque mejora la calidad del output. Si la respuesta es no, y solo la usás por velocidad, asegurate de que la velocidad no venga a costa de calidad — a veces el draft más rápido es el draft más mediocre."}
+};
+const GAMES=[{id:"tf",icon:"⚡",title:"V / F",color:"#FAEEDA",levels:[
+  {xp:15,name:"Básico",time:20,stmts:[
+    {s:"Para construir un stack de IA útil, necesitás al menos 10 herramientas distintas.",ans:false,exp:"Falso. Tres herramientas bien usadas superan a diez usadas superficialmente. El stack mínimo viable es: un LLM general (Claude) para el 80% de las tareas, una herramienta de búsqueda actualizada (Perplexity), y una herramienta especializada en tu tarea más frecuente."},
+    {s:"No necesitás saber programar para automatizar workflows con IA usando herramientas como Zapier.",ans:true,exp:"Verdadero. Herramientas como Zapier y Make permiten conectar triggers (nuevo email, formulario enviado) con procesamiento de IA (Claude) y outputs (email, Slack, Jira) sin escribir una línea de código. La automatización no-code está al alcance de cualquier profesional."},
+    {s:"La mejor práctica es pedirle tu opinión a Claude primero antes de formarte la tuya propia en análisis complejos.",ans:false,exp:"Falso. Empezar por la IA convierte tu pensamiento en edición del pensamiento de la IA. La práctica correcta: formá tu posición primero, luego usá la IA para cuestionarla y encontrar lo que te perdiste. Esto mantiene tu capacidad analítica y usa la IA como amplificador en vez de sustituto."}
+  ]},
+  {xp:20,name:"Básico+",time:15,stmts:[
+    {s:"Para aprender con IA de forma más efectiva, pedirle que use analogías de tu área de expertise acelera la comprensión 5-10x.",ans:true,exp:"Verdadero. El aprendizaje es más rápido cuando se conecta con frameworks mentales ya construidos. Un abogado que aprende blockchain con analogías del derecho de propiedad llega más lejos más rápido que aprendiendo con la terminología técnica desde cero. La IA puede adaptar cualquier explicación a cualquier dominio."},
+    {s:"Automation bias significa que la IA introduce sesgos automáticamente en los outputs.",ans:false,exp:"Falso. Automation bias es la tendencia humana a aceptar el output de sistemas automatizados sin cuestionarlos porque 'la máquina debe saber'. No es un sesgo del modelo — es un sesgo del usuario. La corrección: siempre cuestionar el output de la IA como cuestionarías el análisis de un colega junior muy inteligente."},
+    {s:"Si el tiempo por tarea bajó pero la tasa de aprobación del cliente también bajó, la IA no está generando valor real.",ans:true,exp:"Verdadero. El ROI de la IA no es solo velocidad — es velocidad sin perder calidad. Si el draft más rápido es peor, el tradeoff no vale. La pregunta clave: ¿el output final es de igual o mejor calidad en menos tiempo? Si no, el workflow con IA necesita más revisión humana."}
+  ]},
+  {xp:25,name:"Intermedio",time:12,stmts:[
+    {s:"El deskilling con IA ocurre cuando delegás tanto en la IA que perdés la habilidad subyacente.",ans:true,exp:"Verdadero. Si siempre dejás que la IA genere el primer draft y nunca escribís desde cero, tu habilidad de escritura se atrofia. La solución no es usar menos IA — es mantener práctica deliberada en las habilidades core de tu rol, usá IA para amplificar no para reemplazar."},
+    {s:"El mejor indicador de que la IA es irrelevante en tu stack es que no la usarías si solo ahorrara tiempo pero no mejorara la calidad.",ans:false,exp:"Es al revés: el mejor indicador de que la IA SIGUE siendo valiosa es que la usarías aunque no ahorrara tiempo, porque mejora la calidad. Si la única razón para usarla es velocidad y esa velocidad viene a costa de calidad, el workflow necesita rediseño. La IA que mejora calidad Y ahorra tiempo es la que crea ventaja competitiva real."},
+    {s:"Para automatizar con Zapier + Claude, el punto de entrada ideal es una tarea con input externo predecible y output consistente que hacés más de 5 veces por día.",ans:true,exp:"Verdadero. Los tres criterios son necesarios: input externo (viene de afuera, no requiere que vos lo inicies), output consistente (siempre el mismo tipo), alta frecuencia (valida el costo de configurar la automatización). Una tarea que hacés 2 veces por mes no justifica la automatización."}
+  ]},
+  {xp:35,name:"Avanzado",time:10,stmts:[
+    {s:"La homogenización es un riesgo real donde el contenido generado con IA por diferentes personas empieza a sonar similar.",ans:true,exp:"Verdadero. Si todo el mundo usa el mismo Claude con prompts similares sin dar contexto específico, los outputs tienden a un estilo genérico similar. La diferenciación viene del contexto específico que cada persona provee: su voz de marca, su industria, su audiencia, sus ejemplos. El M6 (SKILL.md) resuelve exactamente esto."},
+    {s:"Una vez que armás un stack de IA efectivo, no necesitás actualizarlo porque los principios son los mismos.",ans:false,exp:"Falso. La industria cambia muy rápido: nuevas herramientas, nuevos modelos, nuevas capacidades cada 3-6 meses. Un stack que era óptimo hace 6 meses puede no serlo hoy. La revisión periódica del stack (cada trimestre) es parte del mantenimiento de la ventaja competitiva con IA."},
+    {s:"Whisper + Claude es una combinación especialmente útil para profesionales de la salud que quieren procesar consultas de forma eficiente y privada.",ans:true,exp:"Verdadero. Whisper transcribe el audio de la consulta (con consentimiento del paciente), Claude genera el resumen clínico estructurado. Si se corre localmente, cero datos salen del consultorio. Esta combinación puede ahorrar 30-60 minutos de documentación por día en un profesional con muchas consultas."}
+  ]},
+  {xp:50,name:"Experto",time:8,stmts:[
+    {s:"Un workflow de calificación de leads con IA puede reducir el tiempo de respuesta de 4 horas a 10 minutos sin cambiar la tasa de conversión.",ans:true,exp:"Verdadero y es uno de los casos de uso con mejor ROI en ventas. Claude analiza el lead (industria, tamaño, necesidad) y genera un score con justificación. El equipo solo toca los leads de alta calidad. El tiempo de respuesta más rápido mejora la tasa de conversión (los leads calificados se enfrían rápido) mientras el equipo usa su tiempo en los que más valen."},
+    {s:"En un equipo donde varios miembros usan IA, construir una librería de prompts compartida es menos valioso que cada uno construya la suya propia.",ans:false,exp:"Falso. Una librería compartida multiplica el valor: los mejores prompts de cada persona benefician a todo el equipo. El conocimiento de dominio colectivo del equipo, encapsulado en prompts, crea una ventaja competitiva que ningún miembro individual podría construir solo. El M6 (SKILL.md de equipo) formaliza exactamente esto."},
+    {s:"El pensamiento crítico con IA requiere más esfuerzo cognitivo que sin IA porque implica evaluar tanto el output de la IA como tu propio análisis.",ans:true,exp:"Verdadero para uso avanzado. En vez de solo pensar, tenés que pensar + evaluar el pensamiento de la IA + integrar lo mejor de ambos + verificar las afirmaciones específicas. Es más trabajo cognitivo que simplemente pensar solo, pero el resultado es cualitativamente mejor cuando se hace bien. La trampa es creer que la IA reduce el esfuerzo cognitivo en tareas complejas — en realidad lo redistribuye."}
+  ]}
+]},
+{id:"build",icon:"🔧",title:"Construir",color:"#EAF3DE",levels:[
+  {xp:15,name:"Básico",intro:"Construí el stack ideal de IA para cada perfil profesional.",slots:["PM de producto en startup tech","Developer senior en empresa financiera","Abogada corporativa en estudio jurídico","Docente universitaria de historia"],comps:["Claude (PRDs) + Perplexity (research) + Claude Design (wireframes)","Cursor (código diario) + Claude (documentación) + Claude Code (refactoring)","NotebookLM (contratos propios) + Perplexity (jurisprudencia reciente) + Claude (redacción)","Claude (materiales) + NotebookLM (podcast de módulos) + ElevenLabs (narración accesible)","ChatGPT para todo sin especialización","Copilot solo — sin herramientas adicionales","Google solo para la investigación jurídica","Solo pizarrón y libros de texto"],correct:[0,1,2,3],fb:"¡Stacks correctos! PM → Claude+Perplexity+Design · Developer → Cursor+Claude+Code · Abogada → NotebookLM+Perplexity+Claude · Docente → Claude+NotebookLM+ElevenLabs. Cada stack usa las herramientas donde tienen ventaja específica para ese rol."},
+  {xp:20,name:"Básico+",intro:"Construí una automatización no-code para calificación de leads con Zapier + Claude.",slots:["Trigger: qué inicia la automatización","Procesamiento: qué hace Claude con el lead","Output 1: dónde va el resultado del análisis","Output 2: qué acción automática se toma"],comps:["Nuevo formulario de contacto enviado en el sitio web","Claude analiza industria, tamaño de empresa y necesidad → genera score 1-10 con justificación","El score y análisis se agregan al CRM (HubSpot/Salesforce) en el registro del lead","Email automático de seguimiento personalizado según la necesidad identificada por Claude","El equipo de ventas recibe manualmente todos los leads sin filtrar","Claude responde directamente al lead sin revisión humana","El análisis se guarda en un archivo de texto sin sistema","Solo se notifica al equipo cuando el lead completa una compra"],correct:[0,1,2,3],fb:"¡Automatización correcta! Formulario → Análisis Claude (score+justificación) → CRM actualizado → Email personalizado. Esta automatización reduce el tiempo de respuesta a leads calificados de horas a minutos sin requerir código. El equipo solo toca los leads con score alto."},
+  {xp:25,name:"Intermedio",intro:"Diseñá el workflow de aprendizaje acelerado con IA para un médico que quiere aprender sobre IA en salud.",slots:["Paso 1: Entrada al concepto nuevo","Paso 2: Práctica y verificación","Paso 3: Aplicación al rol","Paso 4: Mantener pensamiento crítico"],comps:["Pedirle a Claude que explique los conceptos de IA usando analogías del diagnóstico clínico y la fisiología","Hacer preguntas de examen sobre lo aprendido y pedir feedback específico sobre errores","Preguntar cómo aplica cada concepto a casos clínicos reales de su especialidad","Verificar las afirmaciones de la IA sobre estudios clínicos con las fuentes originales (PubMed)","Leer papers técnicos directamente sin explicación adaptada","Memorizar las definiciones sin practicar la aplicación","Aceptar todo lo que dice la IA como verdad sin verificar","Usar solo Wikipedia como fuente de aprendizaje"],correct:[0,1,2,3],fb:"¡Workflow de aprendizaje médico correcto! Analogías clínicas → Práctica con feedback → Aplicación a casos reales → Verificación con fuentes primarias. Este workflow usa todos los principios de aprendizaje efectivo con IA: analogías del dominio propio, práctica activa, aplicación inmediata y pensamiento crítico."},
+  {xp:35,name:"Avanzado",intro:"Construí el sistema de métricas para evaluar si la IA realmente mejora el trabajo de un equipo de contenido.",slots:["Métrica de eficiencia (cuantitativa)","Métrica de calidad (del output)","Métrica de calidad (desde el receptor)","Métrica de riesgo a monitorear"],comps:["Tiempo promedio por pieza de contenido antes vs después de adoptar IA","Tasa de aprobación editorial en primera revisión antes vs después","NPS o satisfaction score del lector/cliente del contenido","Tasa de errores factuales por pieza (detectados post-publicación)","Número de prompts usados por día (vanity metric, no mide valor)","Horas de IA en el stack (irrelevante para el output)","Cantidad de herramientas de IA usadas (más no es mejor)","Costo de las herramientas de IA por mes (sin correlacionar con output)"],correct:[0,1,2,3],fb:"¡Sistema de métricas correcto! Tiempo (eficiencia) + Aprobación editorial (calidad interna) + NPS (calidad externa) + Errores factuales (riesgo). Las últimas cuatro opciones son vanity metrics — miden el uso de la IA, no su impacto en el trabajo real. La única métrica que importa: ¿el output es mejor o igual en menos tiempo?"},
+  {xp:50,name:"Experto",intro:"Diseñá el plan de adopción de IA para un equipo de 15 personas en una consultora de management.",slots:["Mes 1-2: Base y diagnóstico","Mes 3-4: Primeros casos de uso","Mes 5-6: Escalar y gobernar","Mes 7+: Ventaja competitiva"],comps:["Auditar uso actual informal + clasificar datos + definir herramientas aprobadas con DPA + capacitar en prompting básico","Identificar las 3 tareas más repetitivas del equipo → construir prompts documentados → medir impacto antes/después","Construir librería de prompts compartida del equipo + definir política de revisión humana + medir ROI colectivo","Construir SKILL.md de la consultora con el conocimiento de dominio del equipo → ventaja competitiva que los competidores no pueden copiar rápido","Comprar todas las herramientas de IA disponibles y dejar que cada uno las use como quiera","Implementar IA solo en tareas técnicas, no en las de clientes","Hacer un taller de un día y esperar que el equipo adopte solo","Esperar a tener la política perfecta antes de empezar a usar"],correct:[0,1,2,3],fb:"¡Plan de adopción correcto! Diagnóstico+gobernanza → Casos piloto+medición → Escalar+librería compartida → SKILL.md colectivo. El último paso es el más diferenciador: el SKILL.md de la consultora encapsula años de conocimiento de dominio del equipo en un formato que Claude puede usar — eso es lo que crea una ventaja que los competidores tardan años en replicar."}
+]}];
+function save(){try{localStorage.setItem("aim_m4b",JSON.stringify({progress:ST.progress,xp:ST.xp,moduleLevel:ST.moduleLevel,lastDate:new Date().toDateString()}))}catch(e){}}
+function load(){try{const d=localStorage.getItem("aim_m4b");if(d)Object.assign(ST,JSON.parse(d));}catch(e){}initProg();}
+const DT=["","d1","d2","d3","d4","d5"],DN=["","Fácil","Fácil+","Medio","Difícil","Experto"],GIDS=["tf","build"];
+let ST={progress:{},xp:0,moduleLevel:1,cg:null,cl:null,lives:3,sc:0,st:0,tfIdx:0,tfScore:0,tfTimer:null,buildSel:[]};let tfTimeLeft=15;
+function initProg(){GAMES.forEach(g=>{if(!ST.progress[g.id])ST.progress[g.id]={};for(let i=1;i<=5;i++){if(!ST.progress[g.id][i])ST.progress[g.id][i]=i===1?"available":"locked";}});}
+function checkU(){for(let lv=1;lv<=4;lv++){if(GAMES.every(g=>ST.progress[g.id][lv]==="done")){GAMES.forEach(g=>{if(ST.progress[g.id][lv+1]==="locked")ST.progress[g.id][lv+1]="available";});if(lv+1>ST.moduleLevel)ST.moduleLevel=lv+1;}}}
+function resetLvl(lv){GAMES.forEach(g=>{if(ST.progress[g.id][lv]!=="done")ST.progress[g.id][lv]="available";});}
+function countDone(){return Object.values(ST.progress).reduce((a,g)=>a+Object.values(g).filter(v=>v==="done").length,0);}
+function xpFor(gid,lv){return GAMES.find(g=>g.id===gid).levels[lv-1].xp;}
+function gname(id){return id==="tf"?"V / F":"Construir";}
+function renderLives(){document.getElementById("lvsr").innerHTML=Array(3).fill(0).map((_,i)=>`<span class="lf">${i<ST.lives?"❤️":"🖤"}</span>`).join("");}
+function showScreen(n){document.querySelectorAll(".scr").forEach(s=>s.classList.remove("active"));document.getElementById(n).classList.add("active");}
+function toggleG(id){const l=document.getElementById("ll-"+id),c=document.getElementById("gc-"+id);const o=l.style.display==="none";l.style.display=o?"block":"none";c.textContent=o?"▲":"▼";}
+function openLevel(gid,lv){if(ST.progress[gid][lv]==="locked")return;ST.cg=gid;ST.cl=lv;renderTheory(lv);showScreen("s-theory");}
+function goToTheory(){if(ST.tfTimer)clearInterval(ST.tfTimer);renderTheory(ST.cl);showScreen("s-theory");}
+function startGames(gid,lv){if(ST.tfTimer)clearInterval(ST.tfTimer);ST.cg=gid;ST.cl=lv;ST.lives=3;ST.sc=0;ST.st=0;ST.tfIdx=0;ST.tfScore=0;ST.buildSel=[];document.getElementById("g-tit").textContent=`${GAMES.find(g=>g.id===gid).icon} ${gname(gid)} · Nivel ${lv}`;showScreen("s-game");renderLv();}
+function renderLv(){renderLives();document.getElementById("g-prog").style.width="0%";const game=GAMES.find(g=>g.id===ST.cg);const lv=game.levels[ST.cl-1];const body=document.getElementById("gbody");body.innerHTML="";if(ST.cg==="tf")doTF(lv,body);else doBuild(lv,body);}
+function doTF(lv,body){ST.tfIdx=0;ST.tfScore=0;body.innerHTML=`<div><span class="tbadge tbtf">⚡ V/F</span> <span class="dtag ${DT[ST.cl]}">${DN[ST.cl]}</span><div class="gtitle" style="margin-top:5px">¿Verdadero o Falso?</div></div><div class="tftimer"><div class="tffill" id="tff" style="width:100%;background:var(--ac)"></div></div><div class="tfstmt" id="tfs">Cargando...</div><div class="tfbtns"><button class="tfbtn tv" id="tfv" onclick="ansTF(true)">✓ Verdadero</button><button class="tfbtn tf2" id="tff2" onclick="ansTF(false)">✗ Falso</button></div><div class="tfsc" id="tfsc">Pregunta 1 de ${lv.stmts.length}</div><div class="fb" id="fb"></div><button class="nbtn" id="nxt" disabled onclick="winLv()">Finalizar nivel 🏆</button>`;showTFQ(lv);}
+function showTFQ(lv){if(ST.tfIdx>=lv.stmts.length){endTF(lv);return;}const q=lv.stmts[ST.tfIdx];document.getElementById("tfs").textContent=q.s;document.getElementById("tfsc").textContent=`Pregunta ${ST.tfIdx+1} de ${lv.stmts.length}`;document.getElementById("tfv").disabled=false;document.getElementById("tff2").disabled=false;document.getElementById("tfv").className="tfbtn tv";document.getElementById("tff2").className="tfbtn tf2";document.getElementById("fb").style.display="none";tfTimeLeft=lv.time||15;if(ST.tfTimer)clearInterval(ST.tfTimer);ST.tfTimer=setInterval(()=>{tfTimeLeft--;const pct=Math.round((tfTimeLeft/(lv.time||15))*100);const f=document.getElementById("tff");if(!f)return clearInterval(ST.tfTimer);f.style.width=pct+"%";f.style.background=tfTimeLeft>7?"var(--ac)":tfTimeLeft>3?"#BA7517":"#D85A30";if(tfTimeLeft<=0){clearInterval(ST.tfTimer);ansTF(null);}},1000);}
+function ansTF(ans){clearInterval(ST.tfTimer);const lv=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1];const q=lv.stmts[ST.tfIdx];document.getElementById("tfv").disabled=true;document.getElementById("tff2").disabled=true;ST.st++;const ok=ans===q.ans;if(ans===true)document.getElementById("tfv").classList.add(ok?"correct":"wrong");if(ans===false)document.getElementById("tff2").classList.add(ok?"correct":"wrong");const fb=document.getElementById("fb");if(ok){ST.tfScore++;ST.sc++;fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>✓</span><span>${q.exp}</span>`;}else{fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>${ans===null?"Tiempo. ":""}${q.exp}</span>`;}ST.tfIdx++;setTimeout(()=>{if(ST.tfIdx<lv.stmts.length)showTFQ(lv);else endTF(lv);},1800);}
+function endTF(lv){clearInterval(ST.tfTimer);const need=Math.ceil(lv.stmts.length/2);const fb=document.getElementById("fb");if(ST.tfScore>=need){fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>🏆</span><span>${ST.tfScore}/${lv.stmts.length} correctas. ¡Pasaste!</span>`;document.getElementById("nxt").disabled=false;}else{fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>Solo ${ST.tfScore}/${lv.stmts.length}. Necesitás ${need}.</span>`;loseLife(`Necesitás ${need}/${lv.stmts.length} correctas.`);}}
+function doBuild(lv,body){ST.buildSel=Array(lv.slots.length).fill(null);body.innerHTML=`<div><span class="tbadge tbb">🔧 Construir</span> <span class="dtag ${DT[ST.cl]}">${DN[ST.cl]}</span><div class="gtitle" style="margin-top:5px">${lv.intro}</div></div><div style="font-size:10px;color:#6b7280;margin-bottom:4px">Tocá slot para limpiarlo · Elegí:</div><div class="bcanvas" id="bc">${lv.slots.map((s,i)=>`<div class="bslot" id="bs${i}" onclick="clrBS(${i})">${s}</div>`).join("")}</div><div class="cgrid">${lv.comps.map((c,i)=>`<div class="cchip" id="cc${i}" onclick="pickC(${i},'${c.replace(/'/g,"\'")}')">${c}</div>`).join("")}</div><div class="fb" id="fb"></div><button class="cbtn" onclick="chkBuild()">Verificar ✓</button>`;}
+function pickC(idx,text){const e=ST.buildSel.findIndex(v=>v===null);if(e===-1)return;ST.buildSel[e]={idx,text};const sl=document.getElementById("bs"+e);sl.className="bslot filled";sl.textContent=text;document.getElementById("cc"+idx).classList.add("used");}
+function clrBS(i){const v=ST.buildSel[i];if(!v)return;const lv=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1];ST.buildSel[i]=null;const sl=document.getElementById("bs"+i);sl.className="bslot";sl.textContent=lv.slots[i];document.getElementById("cc"+v.idx).classList.remove("used");}
+function chkBuild(){const lv=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1];ST.st++;let ok=true;lv.slots.forEach((_,i)=>{const sel=ST.buildSel[i];const sl=document.getElementById("bs"+i);if(sel&&sel.idx===lv.correct[i]){sl.classList.add("correct");sl.classList.remove("filled");}else{sl.classList.add("wrong");sl.classList.remove("filled");ok=false;}});const fb=document.getElementById("fb");if(ok){ST.sc++;fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>✓</span><span>${lv.fb}</span>`;const btn=document.querySelector(".cbtn");btn.textContent="Finalizar nivel 🏆";btn.className="nbtn";btn.onclick=winLv;}else{fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>Algún componente no está en el lugar correcto.</span>`;loseLife(lv.fb);}}
+function loseLife(hint){ST.lives--;renderLives();if(ST.lives<=0){if(ST.tfTimer)clearInterval(ST.tfTimer);resetLvl(ST.cl);save();document.getElementById("f-desc").textContent=`Sin vidas en "${gname(ST.cg)} · Nivel ${ST.cl}".`;document.getElementById("f-warn").innerHTML=`⚠️ <strong>El nivel ${ST.cl} se reinició.</strong>`;document.getElementById("f-hint").innerHTML=`<strong>Pista:</strong> ${hint}`;showScreen("s-fail");}}
+function winLv(){if(ST.tfTimer)clearInterval(ST.tfTimer);const gid=ST.cg,lv=ST.cl;const wasNew=ST.progress[gid][lv]!=="done";ST.progress[gid][lv]="done";checkU();const xpG=wasNew?xpFor(gid,lv):0;if(wasNew)ST.xp+=xpG;save();const acc=ST.st>0?Math.round((ST.sc/ST.st)*100):100;const newML=GAMES.every(g=>ST.progress[g.id][lv]==="done")&&lv<5;const allC=GAMES.every(g=>ST.progress[g.id][5]==="done");document.getElementById("w-ico").textContent=allC?"🏆":newML?"🔓":"⭐";document.getElementById("w-tit").textContent=allC?"¡Módulo completo!":newML?`¡Nivel ${lv+1} desbloqueado!`:"¡Nivel completado!";document.getElementById("w-desc").textContent=wasNew?`${gname(gid)} · Nivel ${lv} · ${acc}% precisión`:"(Ya completado)";document.getElementById("w-xp").textContent=wasNew?`+${xpG} XP`:"Sin XP extra";const us=document.getElementById("w-unlock");if(allC)us.innerHTML=`<div class="upill">🏆 ¡Módulo completo! Continuá con el siguiente.</div>`;else if(newML)us.innerHTML=`<div class="upill">🔓 ¡Nivel ${lv+1} desbloqueado!</div>`;else us.innerHTML="";document.getElementById("w-cor").textContent=`${ST.sc}/${ST.st}`;document.getElementById("w-acc").textContent=`${acc}%`;document.getElementById("w-tot").textContent=ST.xp;const nb=document.getElementById("w-btn");nb.onclick=null;const nextAvail=GIDS.find(g=>ST.progress[g][lv]==="available");if(nextAvail&&nextAvail!==gid){nb.textContent=`Siguiente juego →`;nb.onclick=()=>startGames(nextAvail,lv);}else if(lv<5&&GAMES.every(g=>ST.progress[g.id][lv]==="done")){nb.textContent=`Ver teoría nivel ${lv+1} 📖`;nb.onclick=()=>openLevel(GIDS[0],lv+1);}else{nb.textContent="Ver módulo ↗";nb.onclick=goHome;}showScreen("s-win");}
+function retryLv(){const fa=GIDS.find(gid=>ST.progress[gid][ST.cl]==="available")||GIDS[0];startGames(fa,ST.cl);}
+function goHome(){if(ST.tfTimer)clearInterval(ST.tfTimer);showScreen("s-home");renderHome();}
+function renderTheory(lv){
+  const th=TH[lv];
+  document.getElementById("th-title").textContent=`Teoría · Nivel ${lv} — ${DN[lv]}`;
+  const chips=th.chips.map(c=>`<span class="tvis-chip" style="background:${c.bg};color:${c.c}">${c.t}</span>`).join("");
+  document.getElementById("tbody").innerHTML=`<div class="tvis" style="background:${th.bg}"><span class="tvis-ico">${th.ico}</span><div class="tvis-title" style="color:#fff">${th.title}</div><div class="tvis-sub" style="color:rgba(255,255,255,.7)">${th.sub}</div><div class="tvis-chips">${chips}</div></div><div class="tcards"><div class="tc"><div class="tc-lbl">🎯 CONCEPTO CLAVE</div><div class="tc-txt">${th.concept}</div></div><div class="tc"><div class="tc-lbl">📖 EXPLICACIÓN</div><div class="tc-txt">${th.text.replace(/\n/g,"<br>")}</div></div><div class="eg"><div class="eg-l">📌 CASO REAL</div><div class="eg-t">${th.eg}</div></div><div class="tip"><span>💡</span><span>${th.tip}</span></div></div>`;
+  document.getElementById("start-btn").onclick=()=>startGames(ST.cg,ST.cl);
+}
+function renderHome(){
+  checkU();const done=countDone();
+  document.getElementById("lv-lbl").textContent=`Progreso: ${done}/10 niveles`;
+  document.getElementById("xp-lbl").textContent=`${ST.xp} XP`;
+  document.getElementById("xpf").style.width=Math.round((done/10)*100)+"%";
+  document.getElementById("mlv-lbl").textContent=`Nivel desbloqueado: ${ST.moduleLevel}`;
+  const all5=GAMES.every(g=>ST.progress[g.id][5]==="done");
+  document.getElementById("mlv-sub").textContent=all5?"🏆 ¡Módulo completo! Continuá con el siguiente.":
+    `Completá los 2 juegos del nivel ${ST.moduleLevel} para avanzar`;
+  const list=document.getElementById("glist");list.innerHTML="";
+  GAMES.forEach(g=>{
+    const dc=Object.values(ST.progress[g.id]).filter(v=>v==="done").length;
+    const pips=Array(5).fill(0).map((_,i)=>{const s=ST.progress[g.id][i+1];return`<div class="gpip ${s==="done"?"done":s==="available"?"act":""}"></div>`;}).join("");
+    const card=document.createElement("div");card.className="gcard";
+    card.innerHTML=`<div class="gch" onclick="toggleG('${g.id}')"><div class="gco" style="background:${g.color}">${g.icon}</div><div class="gi"><div class="gtn">${gname(g.id)}</div><div class="gts">${dc}/5 niveles</div><div class="gpips">${pips}</div></div><div class="gcv" id="gc-${g.id}">▼</div></div><div class="lvlist" id="ll-${g.id}" style="display:none">${g.levels.map((lv,i)=>{const st=ST.progress[g.id][i+1];const lk=st==="locked";const dn=st==="done";return`<div class="lvrow ${lk?"lk":""} " onclick="${lk?"":"openLevel('"+g.id+"',"+(i+1)+")"}" ><div class="lvnum ${dn?"nd":!lk?"na":"nl"}">${dn?"✓":i+1}</div><div class="lvi"><div class="lvn2">${lv.name} <span class="dtag ${DT[i+1]}">${DN[i+1]}</span></div><div class="lvd">+${lv.xp} XP${lk?" · Bloqueado":""}</div>${!lk?`<div class="thpill">📖 Teoría nivel ${i+1}</div>`:""}</div><div class="lvbg ${dn?"bdo":!lk?"bav":"blk"}">${dn?"✓":!lk?"▶":"🔒"}</div></div>`;}).join("")}</div>`;
+    list.appendChild(card);
+  });
+}
+load();renderHome();
+</script>
+</body></html>

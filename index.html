@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AI Mastery">
+<meta name="theme-color" content="#1a1040">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<title>AI Mastery</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--ac:#7F77DD;--ac-l:#EEEDFE;--ac-d:#3C3489;--te:#1D9E75;--te-l:#E1F5EE;--te-d:#085041;--am:#BA7517;--am-l:#FAEEDA;--am-d:#633806}
+html,body{height:100%;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d1f}
+#app{width:100%;max-width:430px;height:100%;margin:0 auto;background:#fff;display:flex;flex-direction:column;position:relative}
+/* VIEWS */
+.view{display:none;flex-direction:column;height:100%;overflow:hidden}
+.view.active{display:flex}
+/* HUB */
+.hero{background:linear-gradient(160deg,#0d0d1f,#1a1040 60%,#0a2040);padding:env(safe-area-inset-top,0) 1.25rem 1rem;padding-top:calc(env(safe-area-inset-top,0px) + 1rem);text-align:center;flex-shrink:0}
+.hero-ico{font-size:32px}
+.hero-title{font-size:21px;font-weight:600;color:#fff;margin-top:.4rem}
+.hero-sub{font-size:11px;color:rgba(255,255,255,.6);margin-top:3px}
+.hero-stats{display:flex;gap:6px;margin-top:12px;justify-content:center}
+.hstat{background:rgba(255,255,255,.1);border-radius:10px;padding:7px 11px;text-align:center}
+.hstat-n{font-size:16px;font-weight:600;color:#fff}
+.hstat-l{font-size:10px;color:rgba(255,255,255,.55);margin-top:1px}
+.xpw{padding:10px 1.25rem;border-bottom:1px solid #e5e7eb;flex-shrink:0}
+.xpr{display:flex;justify-content:space-between;font-size:11px;color:#6b7280;margin-bottom:4px}
+.xb{height:7px;background:#f3f4f6;border-radius:4px;overflow:hidden}
+.xbf{height:100%;background:linear-gradient(90deg,var(--ac),#B5B0F5);border-radius:4px;transition:width .5s}
+.hub-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:1rem 1.25rem 2rem}
+.sec-lbl{font-size:10px;font-weight:600;color:#9ca3af;letter-spacing:.06em;margin-bottom:8px;margin-top:14px}
+.gbadge{display:inline-block;font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;margin-left:5px;vertical-align:middle}
+.gb-core{background:var(--ac-l);color:var(--ac-d)}
+.gb-a{background:#DBEAFE;color:#1e40af}
+.gb-b{background:#FEF3C7;color:#92400e}
+.gb-labs{background:#FAE8F5;color:#6B1A55}
+.gb-ext{background:#D1FAE5;color:#065F46}
+.gb-ind{background:#FDF0E6;color:#7A3A0A}
+.mcard{border-radius:12px;border:1px solid #e5e7eb;margin-bottom:10px;overflow:hidden;background:#fff;transition:all .15s;cursor:pointer;-webkit-user-select:none}
+.mcard:active{transform:scale(.98);opacity:.9}
+.mcard.done{border-color:var(--te)}
+.mcard.inprog{border:1.5px solid var(--ac)}
+.mhdr{display:flex;align-items:center;gap:10px;padding:11px 13px}
+.mico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.minfo{flex:1}
+.mtitle{font-size:13px;font-weight:600;color:#111}
+.msub{font-size:10px;color:#6b7280;margin-top:1px}
+.mparts{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}
+.pp{font-size:9px;padding:2px 7px;border-radius:20px;font-weight:600}
+.pp-done{background:#D1FAE5;color:#065F46}
+.pp-prog{background:var(--ac-l);color:var(--ac-d)}
+.pp-lock{background:#f3f4f6;color:#9ca3af}
+.mxp{font-size:11px;font-weight:600;color:var(--ac-d);flex-shrink:0;text-align:right;line-height:1.4}
+.mxp small{font-size:9px;color:#9ca3af;font-weight:400}
+/* COMPLETE BANNER */
+.cbanner{background:linear-gradient(135deg,#1a0e00,#3a1a00);border-radius:14px;padding:1.25rem;text-align:center;margin-bottom:1rem}
+.cbanner-ico{font-size:32px;margin-bottom:.5rem}
+.cbanner-t{font-size:15px;font-weight:600;color:#fff;margin-bottom:4px}
+.cbanner-s{font-size:11px;color:rgba(255,255,255,.8);line-height:1.6}
+/* MÓDULO VIEW */
+.mod-nav{background:#1a1040;padding:10px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;padding-top:calc(env(safe-area-inset-top,0px) + 10px)}
+.nav-back-btn{color:rgba(255,255,255,.85);font-size:14px;background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:6px;display:flex;align-items:center;gap:4px;-webkit-tap-highlight-color:transparent}
+.nav-back-btn:active{background:rgba(255,255,255,.1)}
+.nav-mod-title{color:rgba(255,255,255,.6);font-size:11px;flex:1;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mod-iframe-wrap{flex:1;overflow:hidden;position:relative}
+.mod-iframe-wrap iframe{width:100%;height:100%;border:none;display:block}
+/* INSTALL BANNER */
+.install-banner{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#1a1040;padding:12px 16px calc(env(safe-area-inset-bottom,0px) + 12px);display:flex;align-items:center;gap:10px;z-index:999;border-top:1px solid rgba(255,255,255,.1)}
+.install-banner.hidden{display:none}
+.ib-ico{font-size:24px;flex-shrink:0}
+.ib-text{flex:1;color:#fff;font-size:12px;line-height:1.4}
+.ib-text strong{display:block;font-size:13px;margin-bottom:2px}
+.ib-btn{background:var(--ac);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.ib-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:18px;cursor:pointer;padding:4px;flex-shrink:0}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HUB VIEW -->
+  <div class="view active" id="view-hub">
+    <div class="hero">
+      <div class="hero-ico">🧠</div>
+      <div class="hero-title">AI Mastery</div>
+      <div class="hero-sub">11 módulos · 9 roles · herramientas · 5 industrias</div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n" id="h-xp">0</div><div class="hstat-l">XP Total</div></div>
+        <div class="hstat"><div class="hstat-n" id="h-parts">0/23</div><div class="hstat-l">Partes</div></div>
+        <div class="hstat"><div class="hstat-n" id="h-pct">0%</div><div class="hstat-l">Avance</div></div>
+      </div>
+    </div>
+    <div class="xpw">
+      <div class="xpr"><span id="xp-lbl">Nivel: Principiante</span><span id="xp-next">0/500 XP</span></div>
+      <div class="xb"><div class="xbf" id="xpf" style="width:0%"></div></div>
+    </div>
+    <div class="hub-scroll" id="hub-list"></div>
+  </div>
+
+  <!-- MÓDULO VIEW -->
+  <div class="view" id="view-mod">
+    <div class="mod-nav">
+      <button class="nav-back-btn" onclick="backToHub()">← Hub</button>
+      <div class="nav-mod-title" id="mod-nav-title">Módulo</div>
+    </div>
+    <div class="mod-iframe-wrap">
+      <iframe id="mod-frame" src="about:blank" allowfullscreen></iframe>
+    </div>
+  </div>
+
+</div>
+
+<!-- INSTALL BANNER (iOS) -->
+<div class="install-banner hidden" id="install-banner">
+  <div class="ib-ico">📲</div>
+  <div class="ib-text">
+    <strong>Instalá AI Mastery</strong>
+    Tocá compartir ⬆️ → "Añadir a inicio"
+  </div>
+  <button class="ib-close" onclick="document.getElementById('install-banner').classList.add('hidden')">✕</button>
+</div>
+
+<script>
+// ── DATOS ─────────────────────────────────────────────
+const MODS=[
+  {id:"m1",icon:"🧠",title:"¿Qué es la IA?",bg:"linear-gradient(135deg,#1a1a2e,#3C3489)",group:"core",
+   parts:[{key:"aim_m1a",lbl:"A",file:"modules/m1a.html",maxLv:15,maxXp:325},{key:"aim_m1b",lbl:"B",file:"modules/m1b.html",maxLv:10,maxXp:225}]},
+  {id:"m2",icon:"✍️",title:"Prompts Efectivos",bg:"linear-gradient(135deg,#042C53,#0C447C)",group:"core",
+   parts:[{key:"aim_m2a",lbl:"A",file:"modules/m2a.html",maxLv:15,maxXp:325},{key:"aim_m2b",lbl:"B",file:"modules/m2b.html",maxLv:10,maxXp:225}]},
+  {id:"m3",icon:"🔬",title:"Tipos de Modelos",bg:"linear-gradient(135deg,#04342C,#085041)",group:"core",
+   parts:[{key:"aim_m3a",lbl:"A",file:"modules/m3a.html",maxLv:15,maxXp:325},{key:"aim_m3b",lbl:"B",file:"modules/m3b.html",maxLv:10,maxXp:225}]},
+  {id:"m4",icon:"💼",title:"IA en tu Trabajo",bg:"linear-gradient(135deg,#4B1528,#72243E)",group:"core",
+   parts:[{key:"aim_m4a",lbl:"A",file:"modules/m4a.html",maxLv:15,maxXp:325},{key:"aim_m4b",lbl:"B",file:"modules/m4b.html",maxLv:10,maxXp:225}]},
+  {id:"m5",icon:"🤖",title:"Agentes de IA",bg:"linear-gradient(135deg,#173404,#27500A)",group:"core",
+   parts:[{key:"aim_m5a",lbl:"A",file:"modules/m5a.html",maxLv:15,maxXp:325},{key:"aim_m5b",lbl:"B",file:"modules/m5b.html",maxLv:10,maxXp:225}]},
+  {id:"m6",icon:"⚡",title:"Skills de IA",bg:"linear-gradient(135deg,#26215C,#3C3489)",group:"core",
+   parts:[{key:"aim_m6a",lbl:"A",file:"modules/m6a.html",maxLv:15,maxXp:325},{key:"aim_m6b",lbl:"B",file:"modules/m6b.html",maxLv:10,maxXp:225}]},
+  {id:"mc",icon:"🤖",title:"Modelos de Claude",bg:"linear-gradient(160deg,#0f0f1a,#1a1040)",group:"special",
+   parts:[{key:"aim_claude_mod",lbl:"Módulo",file:"modules/claude.html",maxLv:25,maxXp:550}]},
+  {id:"m7",icon:"🚀",title:"Roles del Futuro",bg:"linear-gradient(135deg,#2D1B00,#7A3A0A)",group:"roles-b",
+   parts:[{key:"aim_m7a",lbl:"A",file:"modules/m7a.html",maxLv:15,maxXp:325},{key:"aim_m7b",lbl:"B",file:"modules/m7b.html",maxLv:10,maxXp:225}]},
+  {id:"m8",icon:"🔭",title:"Roles Técnicos",bg:"linear-gradient(135deg,#071A2E,#0C3A6B)",group:"roles-a",
+   parts:[{key:"aim_m8a",lbl:"A",file:"modules/m8a.html",maxLv:15,maxXp:325},{key:"aim_m8b",lbl:"B",file:"modules/m8b.html",maxLv:10,maxXp:225}]},
+  {id:"m9",icon:"🛠️",title:"Herramientas Labs",bg:"linear-gradient(135deg,#1a0030,#6B1A55)",group:"labs",
+   parts:[{key:"aim_m9a",lbl:"A",file:"modules/m9a.html",maxLv:15,maxXp:325},{key:"aim_m9b",lbl:"B",file:"modules/m9b.html",maxLv:10,maxXp:225}]},
+  {id:"m10",icon:"🌐",title:"Herramientas Externas",bg:"linear-gradient(135deg,#061a10,#065038)",group:"ext",
+   parts:[{key:"aim_m10a",lbl:"A",file:"modules/m10a.html",maxLv:15,maxXp:325},{key:"aim_m10b",lbl:"B",file:"modules/m10b.html",maxLv:10,maxXp:225}]},
+  {id:"m11",icon:"🏭",title:"IA por Industria",bg:"linear-gradient(135deg,#1a0e00,#7A3A0A)",group:"ind",
+   parts:[{key:"aim_m11a",lbl:"A",file:"modules/m11a.html",maxLv:15,maxXp:325},{key:"aim_m11b",lbl:"B",file:"modules/m11b.html",maxLv:10,maxXp:225}]}
+];
+
+const LEVELS=[
+  {xp:0,lbl:"Principiante"},{xp:500,lbl:"Explorador"},{xp:1200,lbl:"Practicante"},
+  {xp:2200,lbl:"Avanzado"},{xp:3500,lbl:"Experto"},{xp:5000,lbl:"Maestro"},
+  {xp:7000,lbl:"AI Master"},{xp:9000,lbl:"AI Master Pro"},{xp:11000,lbl:"AI Master Elite 🏆"}
+];
+
+const SECTIONS=[
+  {label:"FUNDAMENTOS",badge:"gb-core",text:"M1–M6",ids:["m1","m2","m3","m4","m5","m6"]},
+  {label:"ESPECIAL",badge:"gb-core",text:"Claude",ids:["mc"]},
+  {label:"ROLES ACCESIBLES",badge:"gb-b",text:"Grupo B · M7",ids:["m7"]},
+  {label:"ROLES TÉCNICOS",badge:"gb-a",text:"Grupo A · M8",ids:["m8"]},
+  {label:"HERRAMIENTAS LABS",badge:"gb-labs",text:"M9",ids:["m9"]},
+  {label:"HERRAMIENTAS EXTERNAS",badge:"gb-ext",text:"M10",ids:["m10"]},
+  {label:"IA POR INDUSTRIA",badge:"gb-ind",text:"M11 · Final",ids:["m11"]}
+];
+
+// ── HELPERS ───────────────────────────────────────────
+function readPart(key,maxLv){
+  try{
+    const d=localStorage.getItem(key);if(!d)return{done:0,xp:0,complete:false};
+    const p=JSON.parse(d);
+    const prog=p.progress||{};
+    const done=Object.values(prog).reduce((a,g)=>a+Object.values(g).filter(v=>v==="done").length,0);
+    return{done,xp:p.xp||0,complete:done>=maxLv&&maxLv>0};
+  }catch(e){return{done:0,xp:0,complete:false};}
+}
+function getLv(xp){return LEVELS.reduce((a,l)=>xp>=l.xp?l:a,LEVELS[0]);}
+function getNextLv(xp){return LEVELS.find(l=>l.xp>xp)||LEVELS[LEVELS.length-1];}
+
+// ── RENDER HUB ────────────────────────────────────────
+function renderHub(){
+  let totalXP=0,partsDone=0;
+  const totalParts=MODS.reduce((a,m)=>a+m.parts.length,0);
+  MODS.forEach(m=>m.parts.forEach(p=>{const d=readPart(p.key,p.maxLv);totalXP+=d.xp;if(d.complete)partsDone++;}));
+  const coursePct=Math.round((partsDone/totalParts)*100);
+  const lv=getLv(totalXP),nLv=getNextLv(totalXP);
+  const lvPct=nLv.xp>lv.xp?Math.min(100,Math.round(((totalXP-lv.xp)/(nLv.xp-lv.xp))*100)):100;
+
+  document.getElementById("h-xp").textContent=totalXP;
+  document.getElementById("h-parts").textContent=`${partsDone}/${totalParts}`;
+  document.getElementById("h-pct").textContent=coursePct+"%";
+  document.getElementById("xp-lbl").textContent=`Nivel: ${lv.lbl}`;
+  document.getElementById("xp-next").textContent=nLv.xp>totalXP?`${totalXP}/${nLv.xp} → ${nLv.lbl}`:`🏆 Nivel máximo`;
+  document.getElementById("xpf").style.width=lvPct+"%";
+
+  const el=document.getElementById("hub-list");el.innerHTML="";
+
+  if(partsDone===totalParts){
+    el.innerHTML+=`<div class="cbanner">
+      <div class="cbanner-ico">🌟</div>
+      <div class="cbanner-t">¡AI Mastery completado!</div>
+      <div class="cbanner-s">Conocés la IA de forma sistémica — top 5%.<br><strong style="color:#fff">El conocimiento es tuyo. Ahora aplicalo.</strong></div>
+    </div>`;
+  }
+
+  SECTIONS.forEach(sec=>{
+    el.innerHTML+=`<div class="sec-lbl">${sec.label}<span class="gbadge ${sec.badge}">${sec.text}</span></div>`;
+    sec.ids.forEach(id=>{
+      const mod=MODS.find(m=>m.id===id);
+      const pd=mod.parts.map(p=>readPart(p.key,p.maxLv));
+      const allDone=pd.every(d=>d.complete),anyProg=pd.some(d=>d.done>0);
+      const earnedXP=pd.reduce((a,d)=>a+d.xp,0);
+      const maxXP=mod.parts.reduce((a,p)=>a+p.maxXp,0);
+      const cls=allDone?"done":anyProg?"inprog":"";
+
+      const partsHtml=mod.parts.map((p,i)=>{
+        const d=pd[i];
+        const c=d.complete?"pp-done":d.done>0?"pp-prog":"pp-lock";
+        const ic=d.complete?"✓":d.done>0?"▶":"🔒";
+        const lbl=mod.parts.length===1?"Módulo":p.lbl;
+        const detail=!d.complete&&d.done>0?` (${d.done}/${p.maxLv})`:"";
+        return`<span class="pp ${c}" onclick="event.stopPropagation();openMod('${p.file}','${mod.title} — Parte ${p.lbl}')">${ic} ${lbl}${detail}</span>`;
+      }).join("");
+
+      el.innerHTML+=`<div class="mcard ${cls}" onclick="openMod('${mod.parts[0].file}','${mod.title}')">
+        <div class="mhdr">
+          <div class="mico" style="background:${mod.bg}">${mod.icon}</div>
+          <div class="minfo">
+            <div class="mtitle">${mod.title}</div>
+            <div class="msub">${mod.parts.length===1?"1 parte · 5 juegos":"2 partes · 5 niveles/juego"} · teoría incluida</div>
+            <div class="mparts">${partsHtml}</div>
+          </div>
+          <div class="mxp">${earnedXP}/${maxXP}<br><small>XP</small></div>
+        </div>
+      </div>`;
+    });
+  });
+}
+
+// ── NAVEGACIÓN ────────────────────────────────────────
+function openMod(file, title){
+  document.getElementById("mod-nav-title").textContent=title;
+  document.getElementById("mod-frame").src=file;
+  document.getElementById("view-hub").classList.remove("active");
+  document.getElementById("view-mod").classList.add("active");
+  window.scrollTo(0,0);
+}
+
+function backToHub(){
+  document.getElementById("mod-frame").src="about:blank";
+  document.getElementById("view-mod").classList.remove("active");
+  document.getElementById("view-hub").classList.add("active");
+  renderHub();
+}
+
+// ── SERVICE WORKER ────────────────────────────────────
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').catch(()=>{});
+}
+
+// ── INSTALL BANNER (iOS Safari) ───────────────────────
+function isIOS(){return /iphone|ipad|ipod/i.test(navigator.userAgent);}
+function isInStandaloneMode(){return window.matchMedia('(display-mode:standalone)').matches||window.navigator.standalone;}
+if(isIOS()&&!isInStandaloneMode()&&!sessionStorage.getItem('install-dismissed')){
+  setTimeout(()=>{
+    document.getElementById('install-banner').classList.remove('hidden');
+  },3000);
+}
+document.querySelector('.ib-close')?.addEventListener('click',()=>{
+  sessionStorage.setItem('install-dismissed','1');
+});
+
+// ── INIT ──────────────────────────────────────────────
+renderHub();
+setInterval(renderHub,15000);
+</script>
+</body>
+</html>

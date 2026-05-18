@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>M3A — Tipos de Modelos — AI Mastery</title>
+<style>
+:root{--ac:#085041;--ac-l:#E1F5EE;--ac-d:#04342C}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#fff}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;display:flex;flex-direction:column}
+#app{max-width:430px;width:100%;margin:0 auto;flex:1;display:flex;flex-direction:column;background:#fff}
+.scr{display:none;flex-direction:column;flex:1}.scr.active{display:flex}
+.hero h1{font-size:20px;font-weight:500;color:#fff;margin-top:.5rem}
+.hero p{font-size:12px;color:rgba(255,255,255,.65);margin-top:4px}
+.htag{display:inline-block;margin-top:10px;background:rgba(255,255,255,.12);border-radius:20px;padding:4px 14px;font-size:11px;color:rgba(255,255,255,.8)}
+.xw{padding:8px 1.25rem;border-bottom:.5px solid #e5e7eb}
+.xr{display:flex;justify-content:space-between;font-size:11px;color:#6b7280;margin-bottom:4px}
+.xb{height:6px;background:#f3f4f6;border-radius:3px;overflow:hidden}
+.xbf{height:100%;border-radius:3px;transition:width .5s}
+.lv-banner{padding:8px 1.25rem;background:#FAEEDA;border-bottom:.5px solid #e5e7eb;display:flex;align-items:center;gap:8px}
+.lvt{font-size:12px;color:#633806;font-weight:500}.lvs{font-size:10px;color:#BA7517}
+.gw{padding:1rem 1.25rem;overflow-y:auto;flex:1}
+.slbl{font-size:10px;font-weight:500;color:#6b7280;letter-spacing:.04em;margin-bottom:10px}
+.gcard{border-radius:10px;border:.5px solid #e5e7eb;margin-bottom:8px;overflow:hidden}
+.gch{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;background:#fff}
+.gco{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.gi{flex:1}.gtn{font-size:12px;font-weight:500;color:#111}.gts{font-size:10px;color:#6b7280;margin-top:2px}
+.gpips{display:flex;gap:3px;margin-top:4px}
+.gpip{width:18px;height:4px;border-radius:2px;background:#f3f4f6}
+.gpip.done{background:#1D9E75}.gpip.act{background:var(--ac)}
+.gcv{font-size:11px;color:#6b7280}
+.lvlist{border-top:.5px solid #e5e7eb;background:#f9fafb}
+.lvrow{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:.5px solid #e5e7eb;cursor:pointer}
+.lvrow:last-child{border-bottom:none}.lvrow:hover:not(.lk){background:#fff}.lk{opacity:.38;cursor:default}
+.lvnum{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0}
+.nd{background:#1D9E75;color:#fff}.na{background:var(--ac);color:#fff}.nl{background:#fff;border:.5px solid #e5e7eb;color:#6b7280}
+.lvi{flex:1}.lvn2{font-size:11px;font-weight:500;color:#111}.lvd{font-size:10px;color:#6b7280;margin-top:1px}
+.lvbg{font-size:10px;padding:2px 6px;border-radius:20px}
+.bdo{background:#E1F5EE;color:#085041}.bav{background:var(--ac-l);color:var(--ac-d)}.blk{background:#f3f4f6;color:#6b7280}
+.thpill{display:inline-flex;align-items:center;gap:4px;font-size:9px;background:var(--ac-l);color:var(--ac-d);border-radius:8px;padding:2px 6px;margin-top:3px}
+.thdr{padding:.875rem 1.25rem;border-bottom:.5px solid #e5e7eb;display:flex;align-items:center;gap:10px}
+.bbtn{background:none;border:none;cursor:pointer;font-size:17px;color:#6b7280;padding:4px;border-radius:6px}
+.thdr-i{flex:1}.thdr-t{font-size:11px;font-weight:500;color:#111}.thdr-s{font-size:10px;color:#6b7280}
+.tbody{flex:1;overflow-y:auto}
+.tvis{padding:1.75rem 1.25rem 1.25rem;text-align:center}
+.tvis-ico{font-size:48px;display:block;margin-bottom:.75rem}
+.tvis-title{font-size:20px;font-weight:500;margin-bottom:4px}.tvis-sub{font-size:12px;opacity:.7}
+.tvis-chips{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.tvis-chip{font-size:11px;padding:4px 12px;border-radius:20px;font-weight:500}
+.tcards{padding:1rem 1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.tc{background:#f9fafb;border-radius:10px;padding:.875rem}
+.tc-lbl{font-size:9px;font-weight:500;color:#6b7280;letter-spacing:.05em;margin-bottom:5px}
+.tc-txt{font-size:12px;color:#6b7280;line-height:1.7}.tc-txt strong{color:#111;font-weight:500}
+.eg{background:#fff;border-radius:8px;padding:10px 12px;border-left:3px solid var(--ac)}
+.eg-l{font-size:9px;font-weight:500;color:var(--ac-d);letter-spacing:.05em;margin-bottom:3px}
+.eg-t{font-size:12px;color:#6b7280;line-height:1.6}
+.tip{display:flex;align-items:flex-start;gap:7px;background:#FAEEDA;border-radius:8px;padding:9px 12px;font-size:12px;color:#633806;line-height:1.5}
+.start-btn{margin:0 1.25rem 1.25rem;padding:13px;background:var(--ac);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;flex-shrink:0}
+.ghdr{padding:.875rem 1.25rem;border-bottom:.5px solid #e5e7eb;display:flex;align-items:center;gap:10px}
+.ghi{flex:1}.ght{font-size:11px;font-weight:500;color:#111}.ghs{font-size:10px;color:#6b7280}
+.gpb{height:4px;background:#f3f4f6;border-radius:2px;overflow:hidden;margin-top:3px}
+.gpbf{height:100%;background:var(--ac);border-radius:2px;transition:width .3s}
+.lvsr{display:flex;gap:2px}.lf{font-size:12px}
+.gbody{flex:1;padding:1.25rem;overflow-y:auto;display:flex;flex-direction:column;gap:.75rem}
+.tbadge{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-bottom:3px}
+.tbq{background:#FAEEDA;color:#633806}.tbf{background:#EEEDFE;color:#3C3489}.tbo{background:#E1F5EE;color:#085041}
+.tbtf{background:#FCEBEB;color:#791F1F}.tbb{background:#EAF3DE;color:#27500A}
+.gtitle{font-size:14px;font-weight:500;color:#111;line-height:1.4}
+.dtag{display:inline-block;font-size:9px;padding:1px 5px;border-radius:20px}
+.d1{background:#EAF3DE;color:#27500A}.d2{background:#E6F1FB;color:#0C447C}.d3{background:#FAEEDA;color:#633806}.d4{background:#FAECE7;color:#712B13}.d5{background:#FCEBEB;color:#791F1F}
+.opt{width:100%;text-align:left;padding:9px 11px;border-radius:8px;border:.5px solid #e5e7eb;background:#fff;font-size:12px;color:#111;cursor:pointer;transition:all .15s;line-height:1.4;margin-top:5px}
+.opt:hover:not(:disabled){border-color:var(--ac);background:var(--ac-l);color:var(--ac-d)}
+.opt.correct{border-color:#1D9E75;background:#E1F5EE;color:#085041}.opt.wrong{border-color:#D85A30;background:#FAECE7;color:#712B13}
+.fb{padding:9px 11px;border-radius:8px;font-size:11px;line-height:1.6;display:none;gap:6px;align-items:flex-start}
+.fbok{background:#E1F5EE;color:#085041;display:flex}.fbno{background:#FAECE7;color:#712B13;display:flex}
+.nbtn{width:100%;padding:12px;background:var(--ac);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;margin-top:auto}
+.nbtn:disabled{opacity:.3;cursor:default}
+.cbtn{width:100%;padding:12px;background:#378ADD;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;margin-top:auto}
+.fpr{font-size:12px;line-height:2.4;color:#111;background:#f9fafb;border-radius:8px;padding:10px}
+.binp{display:inline-block;min-width:72px;border:none;border-bottom:2px solid var(--ac);background:transparent;font-size:11px;color:var(--ac-d);outline:none;padding:0 3px;text-align:center;cursor:pointer}
+.binp.correct{border-bottom-color:#1D9E75;color:#085041}.binp.wrong{border-bottom-color:#D85A30;color:#712B13}
+.wbank{display:flex;flex-wrap:wrap;gap:5px}
+.wchip{padding:4px 9px;border-radius:20px;border:.5px solid var(--ac);background:var(--ac-l);color:var(--ac-d);font-size:11px;cursor:pointer;user-select:none}
+.wchip:hover{background:var(--ac);color:#fff}.wchip.used{opacity:.3;cursor:default;pointer-events:none}
+.olist{display:flex;flex-direction:column;gap:5px}
+.oitem{display:flex;align-items:center;gap:7px;padding:9px 11px;border-radius:8px;border:.5px solid #e5e7eb;background:#fff;cursor:grab;user-select:none;touch-action:none}
+.oitem.dragging{opacity:.4}.oitem.correct{border-color:#1D9E75;background:#E1F5EE}.oitem.wrong{border-color:#D85A30;background:#FAECE7}
+.onum{width:20px;height:20px;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:#6b7280;flex-shrink:0}
+.otxt{font-size:11px;color:#111;flex:1;line-height:1.4}
+.tftimer{height:5px;background:#f3f4f6;border-radius:3px;overflow:hidden}
+.tffill{height:100%;border-radius:3px;transition:width .1s linear}
+.tfstmt{font-size:13px;font-weight:500;color:#111;line-height:1.5;text-align:center;padding:1.25rem;background:#f9fafb;border-radius:8px;min-height:80px;display:flex;align-items:center;justify-content:center}
+.tfbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tfbtn{padding:13px;border-radius:8px;border:.5px solid #e5e7eb;background:#fff;font-size:14px;font-weight:500;cursor:pointer;transition:all .15s}
+.tfbtn.tv:hover:not(:disabled){background:#E1F5EE;border-color:#1D9E75;color:#085041}
+.tfbtn.tf2:hover:not(:disabled){background:#FAECE7;border-color:#D85A30;color:#712B13}
+.tfbtn.correct{background:#E1F5EE;border-color:#1D9E75;color:#085041}.tfbtn.wrong{background:#FAECE7;border-color:#D85A30;color:#712B13}
+.tfsc{text-align:center;font-size:11px;color:#6b7280}
+.bcanvas{display:flex;flex-direction:column;gap:5px;padding:8px;border:2px dashed #e5e7eb;border-radius:8px}
+.bslot{padding:7px 10px;border-radius:6px;border:.5px dashed #d1d5db;background:#f9fafb;font-size:11px;color:#6b7280;text-align:center;min-height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;line-height:1.3}
+.bslot.filled{background:var(--ac-l);border-color:var(--ac);color:var(--ac-d);border-style:solid}
+.bslot.correct{background:#E1F5EE;border-color:#1D9E75;color:#085041;border-style:solid}
+.bslot.wrong{background:#FAECE7;border-color:#D85A30;color:#712B13;border-style:solid}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.cchip{padding:7px 9px;border-radius:7px;border:.5px solid #e5e7eb;background:#fff;font-size:10px;color:#111;cursor:pointer;transition:all .15s;text-align:center;line-height:1.3}
+.cchip:hover{border-color:var(--ac);background:var(--ac-l);color:var(--ac-d)}.cchip.used{opacity:.3;cursor:default;pointer-events:none}
+.escr{padding:1.5rem 1.25rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.75rem;flex:1;justify-content:center}
+.eico{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px}
+.ewin{background:#E1F5EE}.elose{background:#FAECE7}
+.etit{font-size:19px;font-weight:500}.edesc{font-size:12px;color:#6b7280;line-height:1.6;max-width:300px}
+.xpp{background:var(--ac-l);color:var(--ac-d);padding:9px 18px;border-radius:8px;font-size:14px;font-weight:500}
+.sr{display:flex;gap:8px;width:100%}
+.sc2{flex:1;background:#f9fafb;border-radius:8px;padding:9px;text-align:center}
+.sn{font-size:18px;font-weight:500}.sl{font-size:10px;color:#6b7280;margin-top:2px}
+.upill{background:#E1F5EE;border:1px solid #1D9E75;border-radius:8px;padding:9px 14px;font-size:11px;color:#085041;width:100%;text-align:center;font-weight:500}
+.hbox{background:#FAECE7;border-radius:8px;padding:10px;font-size:11px;color:#712B13;line-height:1.6;width:100%}
+.wbox{background:#FAEEDA;border-radius:8px;padding:10px;font-size:11px;color:#633806;line-height:1.6;width:100%;text-align:center}
+.hero{background:linear-gradient(160deg,#04342C,#085041);padding:1.5rem 1.25rem 1.25rem;text-align:center}
+</style>
+<div id="app">
+<div class="scr active" id="s-home">
+  <div class="hero"><div style="font-size:44px">🔬</div><h1>Tipos de Modelos — Parte A</h1><p>Módulo 3A · Quiz · Completar · Ordenar · 5 niveles</p><span class="htag">📖 Teoría visual antes de cada nivel</span></div>
+  <div class="xw"><div class="xr"><span id="lv-lbl">Progreso: 0/15 niveles</span><span id="xp-lbl">0 XP</span></div><div class="xb"><div class="xbf" id="xpf" style="width:0%"></div></div></div>
+  <div class="lv-banner"><div style="font-size:16px">🏆</div><div><div class="lvt" id="mlv-lbl">Nivel desbloqueado: 1</div><div class="lvs" id="mlv-sub">Completá los 3 juegos del nivel 1 para avanzar</div></div></div>
+  <div class="gw"><div class="slbl">MINI-JUEGOS — MÓDULO 3A · TIPOS DE MODELOS</div><div id="glist"></div></div>
+</div>
+<div class="scr" id="s-theory">
+  <div class="thdr"><button class="bbtn" onclick="goHome()">←</button><div class="thdr-i"><div class="thdr-t" id="th-title">Teoría · Nivel 1</div><div class="thdr-s">Leé antes de jugar</div></div></div>
+  <div class="tbody" id="tbody"></div>
+  <button class="start-btn" id="start-btn">¡Entendido! Empezar →</button>
+</div>
+<div class="scr" id="s-game">
+  <div class="ghdr"><button class="bbtn" onclick="goToTheory()">←</button><div class="ghi"><div class="ght" id="g-tit">Quiz · Nivel 1</div><div class="ghs" id="g-sub">Pregunta 1 de 3</div><div class="gpb"><div class="gpbf" id="g-prog" style="width:0%"></div></div></div><div class="lvsr" id="lvsr"></div></div>
+  <div class="gbody" id="gbody"></div>
+</div>
+<div class="scr" id="s-win">
+  <div class="escr">
+    <div class="eico ewin" id="w-ico">⭐</div><h2 class="etit" id="w-tit">¡Nivel completado!</h2><p class="edesc" id="w-desc"></p>
+    <div class="xpp" id="w-xp">+15 XP</div><div id="w-unlock" style="width:100%"></div>
+    <div class="sr"><div class="sc2"><div class="sn" id="w-cor">0/0</div><div class="sl">Correctas</div></div><div class="sc2"><div class="sn" id="w-acc">0%</div><div class="sl">Precisión</div></div><div class="sc2"><div class="sn" id="w-tot">0</div><div class="sl">XP total</div></div></div>
+    <button class="nbtn" id="w-btn">Seguir →</button>
+  </div>
+</div>
+<div class="scr" id="s-fail">
+  <div class="escr">
+    <div class="eico elose">💔</div><h2 class="etit">Sin vidas</h2><p class="edesc" id="f-desc"></p>
+    <div class="wbox" id="f-warn"></div><div class="hbox" id="f-hint"></div>
+    <button class="nbtn" style="background:#085041" onclick="goToTheory()">📖 Repasar teoría</button>
+    <button class="nbtn" style="background:#D85A30;margin-top:0" onclick="retryLv()">🔄 Reintentar</button>
+    <button class="nbtn" style="background:#f3f4f6;color:#111;margin-top:0" onclick="goHome()">← Módulo</button>
+  </div>
+</div>
+</div>
+<script>
+const TH={
+1:{bg:"linear-gradient(135deg,#04342C,#085041)",ico:"🔬",title:"Tokens y Ventana de Contexto",sub:"La unidad básica y sus límites",chips:[{t:"Tokens",bg:"#E1F5EE",c:"#085041"},{t:"Contexto",bg:"#E1F5EE",c:"#085041"},{t:"Costos",bg:"#E1F5EE",c:"#085041"}],concept:"Todo lo que entra y sale de un LLM se mide en tokens",text:"<strong>Token:</strong> unidad básica de texto. En inglés 1 token ≈ 0.75 palabras. En español suele ser menos eficiente.\n\n<strong>Ventana de contexto:</strong> cuánto texto puede procesar el modelo a la vez (input + output combinados).\n• Claude: 200k tokens (~500 páginas)\n• GPT-4o: 128k tokens\n• Gemini 1.5 Pro: 1M tokens\n\n<strong>Costo:</strong> los modelos cobran por token de input y output. Los tokens de output son más caros que input porque requieren más cómputo (generación autoregresiva).\n\n<strong>Para reducir costos:</strong> sé conciso en el contexto, usá modelos más pequeños para tareas simples, cacheá respuestas repetitivas.",eg:"Un contrato de 50 páginas tiene ~25.000 tokens. Con ventana de 200k tokens, Claude puede leer el contrato completo + conversar sobre él en el mismo contexto. Con ventanas más pequeñas, habría que dividirlo en partes y perder la visión global.",tip:"El error más común al empezar con IA: usar siempre el modelo más grande. El modelo correcto es el más pequeño que resuelve bien la tarea. Los modelos pequeños cuestan 10-20x menos y responden más rápido para tareas bien definidas."},
+2:{bg:"linear-gradient(135deg,#04342C,#085041)",ico:"⚖️",title:"Modelos Grandes vs Pequeños",sub:"Cuándo usar cada tipo",chips:[{t:"Capacidad",bg:"#E1F5EE",c:"#085041"},{t:"Velocidad",bg:"#E1F5EE",c:"#085041"},{t:"Costo",bg:"#E1F5EE",c:"#085041"}],concept:"El tradeoff es capacidad vs velocidad vs costo — no siempre gana el más capaz",text:"<strong>Modelos grandes (Opus, GPT-4o, Gemini Ultra):</strong>\n• Mayor capacidad de razonamiento\n• Más lentos y más caros\n• Para: análisis profundo, código complejo, decisiones estratégicas\n\n<strong>Modelos pequeños (Haiku, GPT-4o-mini):</strong>\n• Razonamiento más limitado en tareas complejas\n• Muy rápidos y baratos\n• Para: clasificación, extracción, resúmenes simples\n\n<strong>Regla práctica:</strong>\n¿Requiere razonamiento complejo o creatividad? → Modelo grande\n¿Es repetitiva y bien definida? → Modelo pequeño",eg:"Una app de atención al cliente usa Haiku para el 90% de consultas simples (precio, estado de pedido) y escala a Sonnet solo para quejas complejas. Resultado: 80% menos de costo con la misma experiencia de usuario.",tip:"Empezá siempre con el modelo más grande para prototipo — te da el techo de calidad posible. Cuando el producto esté definido, ajustá hacia el modelo más pequeño que mantenga la calidad aceptable. Este proceso se llama model distillation en producción."},
+3:{bg:"linear-gradient(135deg,#04342C,#085041)",ico:"🎯",title:"Fine-tuning vs Prompting vs RAG",sub:"Las tres formas de especializar un modelo",chips:[{t:"Fine-tuning",bg:"#E1F5EE",c:"#085041"},{t:"RAG",bg:"#E1F5EE",c:"#085041"},{t:"Prompting",bg:"#E1F5EE",c:"#085041"}],concept:"Empezá simple: prompting → RAG → fine-tuning solo si los anteriores no alcanzan",text:"<strong>Prompting:</strong> instrucciones en el prompt. Sin costo de infraestructura.\n• Cuándo: comportamiento configurable con instrucciones\n\n<strong>RAG:</strong> buscar documentos relevantes y darlos como contexto.\n• Cuándo: conocimiento actualizable, documentos propios\n• Requiere: infraestructura de búsqueda vectorial\n\n<strong>Fine-tuning:</strong> continuar entrenando el modelo con tus datos.\n• Cuándo: cambiar estilo/comportamiento de forma consistente\n• Requiere: muchos datos de calidad, costo y expertise técnico\n\n<strong>La regla:</strong> empezá con prompting → si no alcanza, agregá RAG → si sigue sin alcanzar, evaluá fine-tuning.",eg:"Asistente jurídico: (1) Prompting: instrucciones sobre derecho argentino. (2) RAG: base de datos de leyes para citas exactas. (3) Fine-tuning: si necesitás el estilo redactivo específico del estudio. Cada paso adicional tiene costo — solo llegás al siguiente si el anterior no alcanza.",tip:"Fine-tuning está sobrevalorado para la mayoría de los casos. El 90% de lo que se intenta con fine-tuning se resuelve mejor con prompting + RAG, sin el costo y la complejidad técnica. Fine-tuning realmente vale para cambios de comportamiento que no podés describir con instrucciones."},
+4:{bg:"linear-gradient(135deg,#04342C,#085041)",ico:"🧩",title:"Mixture of Experts (MoE)",sub:"Escalar capacidad sin escalar costo",chips:[{t:"Expertos",bg:"#E1F5EE",c:"#085041"},{t:"Router",bg:"#E1F5EE",c:"#085041"},{t:"Eficiencia",bg:"#E1F5EE",c:"#085041"}],concept:"MoE activa solo un subconjunto de parámetros por token — más eficiente que activar todo",text:"<strong>Arquitectura densa:</strong> todos los parámetros activos en cada forward pass.\n\n<strong>Mixture of Experts (MoE):</strong>\n• El modelo tiene múltiples expertos (submodelos especializados)\n• Un router decide qué expertos activar para cada token\n• Solo 1-4 expertos activos por token\n\n<strong>Ventaja:</strong> un modelo MoE de 100B parámetros puede tener el costo computacional de uno de 15-20B en inferencia.\n\n<strong>Modelos MoE:</strong>\n• Mixtral 8x7B: 8 expertos, activa 2\n• Grok-1: 314B total, ~86B activos por token",eg:"Como un consultorio: en vez de un médico generalista, tenés 8 especialistas. Cuando llega un caso cardíaco, el router manda al cardiólogo. La atención es más especializada usando el mismo presupuesto total de médicos disponibles.",tip:"MoE explica por qué los modelos mejoran sin que el costo suba proporcionalmente. Cuando el próximo modelo gigante es 5x más capaz pero solo 2x más caro, MoE probablemente sea parte de la respuesta."},
+5:{bg:"linear-gradient(135deg,#04342C,#085041)",ico:"📊",title:"Benchmarks y Evaluación",sub:"Cómo elegir el modelo correcto para tu caso",chips:[{t:"MMLU",bg:"#E1F5EE",c:"#085041"},{t:"Eval propio",bg:"#E1F5EE",c:"#085041"},{t:"Producción",bg:"#E1F5EE",c:"#085041"}],concept:"El mejor benchmark es una muestra de tus tareas reales — no los rankings genéricos",text:"<strong>Benchmarks comunes:</strong>\n• MMLU: conocimiento general (57 materias)\n• HumanEval: generación de código Python\n• MATH: problemas matemáticos\n• GPQA: preguntas nivel PhD\n\n<strong>El problema de los benchmarks:</strong>\n• Pueden ser overfitteados (entrenados para pasar el examen)\n• Un modelo líder en MMLU puede fallar en tu tarea específica\n• No miden: creatividad, seguimiento de instrucciones, latencia, costo\n\n<strong>La solución:</strong> construir un eval set propio con 50-100 ejemplos representativos de tus tareas reales.",eg:"Un modelo lidera HumanEval (código Python) pero cuando lo probás con tu codebase en TypeScript con patrones propios, falla más que uno con menor puntaje. La evaluación en tu contexto real siempre supera a los benchmarks genéricos.",tip:"Data contamination: los ejemplos de benchmarks populares pueden estar en el preentrenamiento del modelo, inflando artificialmente los scores. Por eso los eval sets privados son más confiables. Un eval set propio de 50 ejemplos bien elegidos vale más que cualquier ranking externo."}
+};
+const GAMES=[{id:"quiz",icon:"❓",title:"Quiz",color:"#FAEEDA",levels:[
+  {xp:15,name:"Básico",qs:[
+    {q:"¿Qué es un token en los LLMs?",opts:["Una contraseña de API","La unidad básica de texto — aproximadamente 0.75 palabras en inglés","Un tipo de parámetro del modelo","Una unidad de memoria del servidor"],c:1,fb:"Token = unidad básica de procesamiento y facturación. Todo lo que entra y sale del modelo se mide en tokens. En español suele ser menos eficiente que en inglés — más tokens por palabra."},
+    {q:"¿Cuándo conviene usar un modelo pequeño como Claude Haiku?",opts:["Nunca — siempre el más capaz","Para tareas repetitivas y bien definidas: clasificar, extraer, resumir","Solo con presupuesto limitado","Solo para código"],c:1,fb:"Modelos pequeños = velocidad alta + costo bajo. El 80% de llamadas en producción de muchas empresas usan modelos pequeños para casos bien definidos. El modelo correcto es el más pequeño que resuelve bien la tarea."},
+    {q:"¿Cuál es el orden correcto para especializar un modelo?",opts:["Fine-tuning → RAG → prompting","Prompting → RAG → fine-tuning (solo si los anteriores no alcanzan)","RAG → fine-tuning → prompting","Siempre fine-tuning para máxima especialización"],c:1,fb:"La escalera: prompting (sin costo) → RAG (conocimiento actualizable) → fine-tuning (caro y complejo, último recurso). El 90% de casos se resuelven antes de llegar a fine-tuning."}
+  ]},
+  {xp:20,name:"Básico+",qs:[
+    {q:"¿Qué es la ventana de contexto?",opts:["El tiempo máximo de respuesta","La cantidad total de tokens (input + output) que puede procesar en una interacción","El número de conversaciones simultáneas","La RAM necesaria para correr el modelo"],c:1,fb:"Ventana de contexto = cuánto texto puede ver a la vez. Claude: 200k tokens (~500 páginas). Cuando el texto supera la ventana, hay que dividirlo o usar RAG para manejar documentos muy largos."},
+    {q:"¿Qué hace el router en una arquitectura MoE?",opts:["Dirige el tráfico de red entre servidores","Decide qué expertos activar para cada token — solo 1-4 de N expertos disponibles","Optimiza el costo de las llamadas a la API","Traduce los tokens a otro idioma"],c:1,fb:"El router es el componente clave de MoE: analiza cada token y decide qué expertos especializados activar. Esto permite tener muchos parámetros totales pero activar solo una fracción, reduciendo el costo de inferencia."},
+    {q:"¿Por qué los benchmarks públicos no son suficientes para elegir un modelo?",opts:["Son muy difíciles de interpretar","Pueden ser overfitteados y no miden el rendimiento en tu caso de uso específico","Solo los laboratorios ven los resultados","Miden velocidad en vez de calidad"],c:1,fb:"Benchmarks públicos: posible overfitting + no miden tu dominio específico. La solución: un eval set propio con 50-100 ejemplos de tus tareas reales. Es el único benchmark que garantiza relevancia para tu caso."}
+  ]},
+  {xp:25,name:"Intermedio",qs:[
+    {q:"Una empresa clasifica 1M emails/día en 5 categorías. ¿Qué estrategia?",opts:["Modelo grande con fine-tuning","Modelo pequeño con prompting — tarea definida, escala requiere bajo costo","RAG con historial de emails","Modelo grande sin optimización"],c:1,fb:"Clasificación masiva = modelo pequeño. La tarea es bien definida (5 categorías), repetitiva (1M/día), sin razonamiento complejo. Usar modelo grande sería 10-50x más caro sin mejora proporcional para esta tarea."},
+    {q:"¿Cuál es la ventaja principal de RAG sobre fine-tuning para conocimiento empresarial?",opts:["RAG es más barato de entrenar","RAG permite actualizar conocimiento sin reentrenar y provee citas verificables","RAG produce siempre mejor calidad","RAG no requiere infraestructura adicional"],c:1,fb:"RAG gana en actualización: cambió una política → actualizás el documento. Con fine-tuning, cada cambio requiere reentrenar. Para conocimiento dinámico, RAG siempre es la opción correcta."},
+    {q:"¿Por qué los tokens de output son más caros que los de input?",opts:["Es una decisión arbitraria de pricing","Generar cada token requiere una pasada completa por el modelo (autoregresivo), mientras que el input se procesa en paralelo","Los tokens de output contienen más información","Para desincentivar respuestas largas"],c:1,fb:"La razón técnica: los LLMs generan output token por token — cada nuevo token requiere procesar todo el contexto (inferencia autoregresiva). El input se procesa en paralelo con Transformers. Más cómputo por token de output = precio más alto."}
+  ]},
+  {xp:35,name:"Avanzado",qs:[
+    {q:"¿Cuándo fine-tuning supera claramente a RAG + prompting?",opts:["Siempre que el dominio sea especializado","Cuando necesitás cambios de comportamiento/estilo difíciles de describir con instrucciones, o cuando la latencia de RAG es inaceptable","Con más de 1000 ejemplos de entrenamiento","Cuando el conocimiento es estable"],c:1,fb:"Fine-tuning gana en dos casos: (1) comportamientos no describibles con instrucciones (el modelo aprende 'cómo'), (2) latencia crítica donde el RAG retrieval agrega demasiado tiempo. Para conocimiento factual en documentos, RAG casi siempre gana."},
+    {q:"¿Qué implica MoE para el costo de producción?",opts:["Siempre aumenta el costo por tener más parámetros","Puede reducir significativamente el costo de inferencia al activar solo fracción de parámetros","No impacta el costo — solo la velocidad","Aumenta costo de entrenamiento pero no de inferencia"],c:1,fb:"MoE = mayor capacidad total + menor costo de inferencia. 300B parámetros activando solo 50B por token tiene costo similar a modelo denso de 50B. Explica mejoras de capacidad sin aumentos proporcionales en costo."},
+    {q:"500 ejemplos de contratos para fine-tuning de análisis legal. ¿Qué estrategia?",opts:["Fine-tuning con los 500 — cualquier dato mejora","RAG con contratos existentes + prompting cuidadoso — 500 suelen ser insuficientes para fine-tuning efectivo","Esperar 10.000 ejemplos","Modelo grande sin datos propios"],c:1,fb:"500 ejemplos suelen ser insuficientes para fine-tuning efectivo en tareas complejas. Estrategia correcta: RAG con contratos como base de conocimiento + prompting bien diseñado. Si no alcanza, recién evaluar fine-tuning con data augmentation."}
+  ]},
+  {xp:50,name:"Experto",qs:[
+    {q:"¿Por qué TTFT (Time To First Token) importa más que latencia total en apps conversacionales?",opts:["Siempre importa la latencia total","El streaming hace que los usuarios perciban fluidez cuando el texto empieza rápido, aunque la respuesta tarde más","El primer token tiene más información","Reducir TTFT reduce automáticamente la latencia total"],c:1,fb:"TTFT + streaming: los usuarios toleran respuestas largas si empiezan a aparecer rápido. Es preferible TTFT bajo con streaming a latencia total baja sin streaming. Por eso las interfaces modernas muestran texto en tiempo real."},
+    {q:"¿Qué es data contamination en benchmarks?",opts:["Errores en los datos de evaluación","Cuando ejemplos del benchmark están en el preentrenamiento del modelo, inflando artificialmente los scores","Datos de entrenamiento de baja calidad","Mezcla de idiomas en los benchmarks"],c:1,fb:"Data contamination: el modelo 'recuerda' los ejemplos del benchmark en vez de 'resolverlos'. Los laboratorios pueden (intencionalmente o no) entrenar contra benchmarks populares. Por eso eval sets privados y evaluaciones nuevas son más confiables."},
+    {q:"¿Cuál es la técnica de eficiencia que combina destilación + MoE + quantización en producción moderna?",opts:["Siempre se usan por separado","En producción moderna se usan varias en combinación — un modelo MoE quantizado puede ser 10-20x más eficiente que el denso original","Solo MoE es relevante en 2026","La quantización hace irrelevante al MoE"],c:1,fb:"Producción moderna = múltiples técnicas combinadas: MoE (activación sparse) + quantización (precisión reducida) + speculative decoding + caching. La combinación puede resultar en 10-20x de eficiencia vs el modelo denso original con pérdida mínima de calidad."}
+  ]}
+]},
+{id:"fill",icon:"✏️",title:"Completar",color:"#EEEDFE",levels:[
+  {xp:15,name:"Básico",prompt:"Un ___ es la unidad básica de texto del LLM. La ___ de contexto define cuánto puede procesar a la vez. Los tokens de ___ son más caros que los de ___.",blanks:["token","ventana","output","input"],bank:["token","ventana","output","input","byte","límite","respuesta","procesamiento"],fb:"¡Correcto! Token + ventana + output más caro que input = los fundamentos de cómo se mide y cobra cualquier modelo de lenguaje."},
+  {xp:20,name:"Básico+",prompt:"La escalera correcta es: ___, luego ___ si necesitás conocimiento propio, y ___ solo como último recurso. Para tareas repetitivas usar modelos ___ ahorra costo.",blanks:["prompting","RAG","fine-tuning","pequeños"],bank:["prompting","RAG","fine-tuning","pequeños","grounding","embeddings","entrenamiento","grandes"],fb:"¡Bien! Prompting → RAG → fine-tuning + modelos pequeños para tareas simples. Esta secuencia evita el error de sobre-ingeniería al empezar."},
+  {xp:25,name:"Intermedio",prompt:"MoE significa ___ of Experts. Activa solo un ___ de parámetros por token usando un ___. Un ___ set propio vale más que cualquier ___ público para elegir modelo.",blanks:["Mixture","subconjunto","router","eval","benchmark"],bank:["Mixture","subconjunto","router","eval","benchmark","Selection","fracción","classifier","test","ranking"],fb:"¡Exacto! Mixture of Experts + subconjunto via router + eval propio > benchmark público. Los fundamentos técnicos que explican la eficiencia de los modelos modernos."},
+  {xp:35,name:"Avanzado",prompt:"Data ___ ocurre cuando ejemplos de benchmarks están en el ___ del modelo. Fine-tuning supera a RAG cuando necesitás cambios de ___ no ___ con instrucciones.",blanks:["contamination","preentrenamiento","comportamiento","describibles"],bank:["contamination","preentrenamiento","comportamiento","describibles","poisoning","entrenamiento","estilo","especificables"],fb:"¡Avanzado! Data contamination + preentrenamiento + comportamientos no describibles = el nivel de precisión que distingue el uso profesional de la IA en producción."},
+  {xp:50,name:"Experto",prompt:"TTFT significa Time To First ___, más importante en apps ___ porque el ___ ocupa la espera. RAG supera a fine-tuning cuando el conocimiento es ___ y necesitás ___ verificables.",blanks:["Token","conversacionales","streaming","dinámico","citas"],bank:["Token","conversacionales","streaming","dinámico","citas","Output","interactivas","rendering","actualizable","fuentes"],fb:"¡Experto! TTFT + conversacionales + streaming + dinámico + citas = el vocabulario técnico de producción que te permite diseñar sistemas de IA reales."}
+]},
+{id:"order",icon:"🔀",title:"Ordenar",color:"#E1F5EE",levels:[
+  {xp:15,name:"Básico",intro:"Ordená los modelos de menor a mayor capacidad de razonamiento.",items:["Modelos tiny/edge — para el dispositivo, tareas muy simples","Modelos pequeños (Haiku, GPT-4o-mini) — clasificación y extracción","Modelos medianos (Sonnet, GPT-4o) — balance capacidad-costo","Modelos grandes (Opus, GPT-4) — razonamiento complejo","Modelos de razonamiento (o1, o3) — matemáticas y ciencia complejas"],fb:"¡Correcto! Tiny → Pequeño → Mediano → Grande → Razonamiento. La jerarquía refleja tanto la capacidad como el costo. Los de razonamiento son los más capaces pero también los más lentos y caros."},
+  {xp:20,name:"Básico+",intro:"Ordená el proceso para elegir la estrategia de especialización.",items:["Definir el caso de uso: qué tarea, inputs y outputs esperados","Probar con prompting — sin costo de infraestructura","Evaluar: ¿es suficientemente bueno?","Si falta conocimiento propio, implementar RAG","Si falta comportamiento/estilo, evaluar fine-tuning","Medir en producción y ajustar continuamente"],fb:"¡Proceso correcto! Definir → Prompting → Evaluar → RAG → Fine-tuning → Medir. Evita saltar directo al fine-tuning antes de saber si el problema era más simple."},
+  {xp:25,name:"Intermedio",intro:"Ordená los componentes de un sistema RAG.",items:["Preparar y chunkar documentos en fragmentos manejables (500-1000 tokens)","Generar embeddings de cada chunk con un modelo de embeddings","Almacenar en vector database (Pinecone, pgvector, Weaviate)","Recibir consulta del usuario y convertirla en embedding","Buscar los chunks más similares por similitud vectorial","Incluir chunks relevantes en el contexto del LLM y generar respuesta"],fb:"¡Pipeline RAG correcto! Preparar → Embeddings → Vector DB → Embedding consulta → Búsqueda → Contexto + Respuesta. Los embeddings son la clave: permiten búsqueda semántica por significado, no solo por palabras clave."},
+  {xp:35,name:"Avanzado",intro:"Ordená los factores para elegir modelo en producción, de más a menos crítico.",items:["Calidad en tu caso de uso real — medida con tu eval set propio","Costo por token — multiplicado por el volumen esperado","Latencia y TTFT — según requisitos de UX de tu app","Límites de contexto — según tamaño de documentos o conversaciones","Confiabilidad del proveedor y SLA — uptime y soporte","Términos de privacidad — especialmente para datos sensibles o regulados"],fb:"¡Orden correcto! Calidad → Costo → Latencia → Contexto → Confiabilidad → Privacidad. Calidad va primero porque un modelo barato que da malas respuestas tiene valor cero. Privacidad al final no porque no importe sino porque es un requisito binario — si no cumple, queda descalificado."},
+  {xp:50,name:"Experto",intro:"Ordená la evolución de técnicas de eficiencia en LLMs.",items:["Modelos densos — todos los parámetros activos, escala lineal con parámetros","Quantización — reducir precisión de pesos para menos memoria y más velocidad","Destilación — entrenar modelo pequeño para imitar al grande","Mixture of Experts — activar solo expertos relevantes, escala sublineal","Speculative decoding — modelo pequeño predice drafts, grande verifica","Caching e inferencia continua — reusar computación entre requests"],fb:"¡Evolución correcta! Denso → Quantización → Destilación → MoE → Speculative decoding → Caching. En producción moderna se combinan: MoE quantizado con caching puede ser 10-20x más eficiente que el modelo denso original."}
+]}];
+function save(){try{localStorage.setItem("aim_m3a",JSON.stringify({progress:ST.progress,xp:ST.xp,moduleLevel:ST.moduleLevel,lastDate:new Date().toDateString()}))}catch(e){}}
+function load(){try{const d=localStorage.getItem("aim_m3a");if(d)Object.assign(ST,JSON.parse(d));}catch(e){}initProg();}
+
+const DT=["","d1","d2","d3","d4","d5"],DN=["","Fácil","Fácil+","Medio","Difícil","Experto"],GIDS=["quiz","fill","order"];
+let ST={progress:{},xp:0,moduleLevel:1,cg:null,cl:null,lives:3,sc:0,st:0,fillSel:[],orderItems:[],orderDragging:null};
+let qIdx=0;
+function initProg(){GAMES.forEach(g=>{if(!ST.progress[g.id])ST.progress[g.id]={};for(let i=1;i<=5;i++){if(!ST.progress[g.id][i])ST.progress[g.id][i]=i===1?"available":"locked";}});}
+function checkU(){for(let lv=1;lv<=4;lv++){if(GAMES.every(g=>ST.progress[g.id][lv]==="done")){GAMES.forEach(g=>{if(ST.progress[g.id][lv+1]==="locked")ST.progress[g.id][lv+1]="available";});if(lv+1>ST.moduleLevel)ST.moduleLevel=lv+1;}}}
+function resetLvl(lv){GAMES.forEach(g=>{if(ST.progress[g.id][lv]!=="done")ST.progress[g.id][lv]="available";});}
+function countDone(){return Object.values(ST.progress).reduce((a,g)=>a+Object.values(g).filter(v=>v==="done").length,0);}
+function xpFor(gid,lv){return GAMES.find(g=>g.id===gid).levels[lv-1].xp;}
+function gname(id){return id==="quiz"?"Quiz":id==="fill"?"Completar":"Ordenar";}
+function renderLives(){document.getElementById("lvsr").innerHTML=Array(3).fill(0).map((_,i)=>`<span class="lf">${i<ST.lives?"❤️":"🖤"}</span>`).join("");}
+function showScreen(n){document.querySelectorAll(".scr").forEach(s=>s.classList.remove("active"));document.getElementById(n).classList.add("active");}
+function toggleG(id){const l=document.getElementById("ll-"+id),c=document.getElementById("gc-"+id);const o=l.style.display==="none";l.style.display=o?"block":"none";c.textContent=o?"▲":"▼";}
+function openLevel(gid,lv){if(ST.progress[gid][lv]==="locked")return;ST.cg=gid;ST.cl=lv;renderTheory(lv);showScreen("s-theory");}
+function goToTheory(){renderTheory(ST.cl);showScreen("s-theory");}
+function startGames(gid,lv){ST.cg=gid;ST.cl=lv;ST.lives=3;ST.sc=0;ST.st=0;qIdx=0;ST.fillSel=[];ST.orderItems=[];document.getElementById("g-tit").textContent=`${GAMES.find(g=>g.id===gid).icon} ${gname(gid)} · Nivel ${lv}`;showScreen("s-game");renderLv();}
+function renderLv(){renderLives();document.getElementById("g-prog").style.width="0%";const game=GAMES.find(g=>g.id===ST.cg);const lv=game.levels[ST.cl-1];const body=document.getElementById("gbody");body.innerHTML="";if(ST.cg==="quiz")doQuiz(lv,body);else if(ST.cg==="fill")doFill(lv,body);else doOrder(lv,body);}
+function doQuiz(lv,body){qIdx=0;showQ(lv,body);}
+function showQ(lv,body){const q=lv.qs[qIdx],tot=lv.qs.length;document.getElementById("g-sub").textContent=`Pregunta ${qIdx+1} de ${tot}`;document.getElementById("g-prog").style.width=Math.round((qIdx/tot)*100)+"%";body.innerHTML=`<div><span class="tbadge tbq">❓ Quiz</span> <span class="dtag ${DT[ST.cl]}">${DN[ST.cl]}</span><div class="gtitle" style="margin-top:5px">${q.q}</div></div>${q.opts.map((o,i)=>`<button class="opt" id="qo${i}" onclick="selQ(${i},${q.c})">${o}</button>`).join("")}<div class="fb" id="fb"></div><button class="nbtn" id="nxt" disabled onclick="nextQ()">${qIdx===tot-1?"Finalizar nivel 🏆":"Siguiente →"}</button>`;}
+function selQ(sel,correct){document.querySelectorAll(".opt").forEach(o=>o.disabled=true);ST.st++;const q=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1].qs[qIdx];const fb=document.getElementById("fb");if(sel===correct){document.getElementById("qo"+sel).classList.add("correct");ST.sc++;fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>✓</span><span>${q.fb}</span>`;}else{document.getElementById("qo"+sel).classList.add("wrong");document.getElementById("qo"+correct).classList.add("correct");fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>${q.fb}</span>`;loseLife(q.fb);return;}document.getElementById("nxt").disabled=false;}
+function nextQ(){qIdx++;const lv=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1];if(qIdx<lv.qs.length){const b=document.getElementById("gbody");b.innerHTML="";showQ(lv,b);}else winLv();}
+function doFill(lv,body){ST.fillSel=Array(lv.blanks.length).fill(null);let ph=lv.prompt;lv.blanks.forEach((_,i)=>{ph=ph.replace("___",`<input class="binp" id="bi${i}" readonly placeholder="___" onclick="clrB(${i})">`)});const sh=[...lv.bank].sort(()=>Math.random()-.5);body.innerHTML=`<div><span class="tbadge tbf">✏️ Completar</span> <span class="dtag ${DT[ST.cl]}">${DN[ST.cl]}</span><div class="gtitle" style="margin-top:5px">Completá el texto</div></div><div class="fpr">${ph}</div><div class="wbank">${sh.map(w=>`<div class="wchip" onclick="pickW('${w.replace(/'/g,"\'")}',this)">${w}</div>`).join("")}</div><div class="fb" id="fb"></div><button class="cbtn" onclick="chkFill()">Verificar ✓</button>`;}
+function pickW(w,el){const i=ST.fillSel.findIndex(v=>v===null);if(i===-1)return;ST.fillSel[i]=w;document.getElementById("bi"+i).value=w;el.classList.add("used");}
+function clrB(i){const v=ST.fillSel[i];if(!v)return;ST.fillSel[i]=null;document.getElementById("bi"+i).value="";document.querySelectorAll(".wchip").forEach(c=>{if(c.textContent===v&&c.classList.contains("used"))c.classList.remove("used");});}
+function chkFill(){const lv=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1];ST.st++;let ok=true;lv.blanks.forEach((b,i)=>{const inp=document.getElementById("bi"+i);if(ST.fillSel[i]===b)inp.classList.add("correct");else{inp.classList.add("wrong");ok=false;}});const fb=document.getElementById("fb");if(ok){ST.sc++;fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>✓</span><span>${lv.fb}</span>`;const btn=document.querySelector(".cbtn");btn.textContent="Finalizar nivel 🏆";btn.className="nbtn";btn.onclick=winLv;}else{fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>Alguna respuesta no es correcta.</span>`;loseLife(lv.fb);}}
+function doOrder(lv,body){ST.orderItems=[...lv.items].sort(()=>Math.random()-.5);body.innerHTML=`<div><span class="tbadge tbo">🔀 Ordenar</span> <span class="dtag ${DT[ST.cl]}">${DN[ST.cl]}</span><div class="gtitle" style="margin-top:5px">${lv.intro}</div></div><div style="font-size:10px;color:#6b7280;margin-bottom:4px">Arrastrá para reordenar ↕</div><div class="olist" id="olist"></div><div class="fb" id="fb"></div><button class="cbtn" onclick="chkOrder()">Verificar orden ✓</button>`;renderOL();}
+function renderOL(){const ol=document.getElementById("olist");ol.innerHTML="";ST.orderItems.forEach((item,i)=>{const d=document.createElement("div");d.className="oitem";d.draggable=true;d.innerHTML=`<span style="font-size:12px;color:#9ca3af">⠿</span><span class="onum">${i+1}</span><span class="otxt">${item}</span>`;d.addEventListener("dragstart",()=>{ST.orderDragging=i;d.classList.add("dragging");});d.addEventListener("dragend",()=>d.classList.remove("dragging"));d.addEventListener("dragover",e=>e.preventDefault());d.addEventListener("drop",e=>{e.preventDefault();const f=ST.orderDragging,t=i;if(f===t)return;const a=[...ST.orderItems];const[r]=a.splice(f,1);a.splice(t,0,r);ST.orderItems=a;renderOL();});d.addEventListener("touchstart",e=>{ST.orderDragging=i;d.classList.add("dragging");},{passive:true});d.addEventListener("touchend",()=>d.classList.remove("dragging"));d.addEventListener("touchmove",e=>{e.preventDefault();const t=e.touches[0];const els=document.elementsFromPoint(t.clientX,t.clientY);const target=els.find(el=>el.classList.contains("oitem")&&el!==d);if(target){const ti=Array.from(ol.children).indexOf(target);if(ti!==-1&&ti!==ST.orderDragging){const a=[...ST.orderItems];const[r]=a.splice(ST.orderDragging,1);a.splice(ti,0,r);ST.orderItems=a;ST.orderDragging=ti;renderOL();}}},{passive:false});ol.appendChild(d);});}
+function chkOrder(){const lv=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1];ST.st++;const ok=lv.items.every((item,i)=>item===ST.orderItems[i]);document.querySelectorAll(".oitem").forEach((el,i)=>{el.classList.add(lv.items[i]===ST.orderItems[i]?"correct":"wrong");el.draggable=false;});const fb=document.getElementById("fb");if(ok){ST.sc++;fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>✓</span><span>${lv.fb}</span>`;const btn=document.querySelector(".cbtn");btn.textContent="Finalizar nivel 🏆";btn.className="nbtn";btn.onclick=winLv;}else{fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>El orden no es correcto.</span>`;loseLife(lv.fb);}}
+function loseLife(hint){ST.lives--;renderLives();if(ST.lives<=0){resetLvl(ST.cl);save();document.getElementById("f-desc").textContent=`Sin vidas en "${gname(ST.cg)} · Nivel ${ST.cl}".`;document.getElementById("f-warn").innerHTML=`⚠️ <strong>El nivel ${ST.cl} se reinició.</strong>`;document.getElementById("f-hint").innerHTML=`<strong>Pista:</strong> ${hint}`;showScreen("s-fail");}}
+function winLv(){const gid=ST.cg,lv=ST.cl;const wasNew=ST.progress[gid][lv]!=="done";ST.progress[gid][lv]="done";checkU();const xpG=wasNew?xpFor(gid,lv):0;if(wasNew)ST.xp+=xpG;save();const acc=ST.st>0?Math.round((ST.sc/ST.st)*100):100;const newML=GAMES.every(g=>ST.progress[g.id][lv]==="done")&&lv<5;const allC=GAMES.every(g=>ST.progress[g.id][5]==="done");document.getElementById("w-ico").textContent=allC?"🏆":newML?"🔓":"⭐";document.getElementById("w-tit").textContent=allC?"¡Parte A completada!":newML?`¡Nivel ${lv+1} desbloqueado!`:"¡Nivel completado!";document.getElementById("w-desc").textContent=wasNew?`${gname(gid)} · Nivel ${lv} · ${acc}% precisión`:"(Ya completado)";document.getElementById("w-xp").textContent=wasNew?`+${xpG} XP`:"Sin XP extra";const us=document.getElementById("w-unlock");if(allC)us.innerHTML=`<div class="upill">🏆 ¡Parte A completa! Continuá con la Parte B.</div>`;else if(newML)us.innerHTML=`<div class="upill">🔓 ¡Nivel ${lv+1} desbloqueado!</div>`;else us.innerHTML="";document.getElementById("w-cor").textContent=`${ST.sc}/${ST.st}`;document.getElementById("w-acc").textContent=`${acc}%`;document.getElementById("w-tot").textContent=ST.xp;const nb=document.getElementById("w-btn");nb.onclick=null;const nextAvail=GIDS.find(g=>ST.progress[g][lv]==="available");if(nextAvail&&nextAvail!==gid){nb.textContent=`Siguiente juego →`;nb.onclick=()=>startGames(nextAvail,lv);}else if(lv<5&&GAMES.every(g=>ST.progress[g.id][lv]==="done")){nb.textContent=`Ver teoría nivel ${lv+1} 📖`;nb.onclick=()=>openLevel(GIDS[0],lv+1);}else{nb.textContent="Ver módulo ↗";nb.onclick=goHome;}showScreen("s-win");}
+function retryLv(){const fa=GIDS.find(gid=>ST.progress[gid][ST.cl]==="available")||GIDS[0];startGames(fa,ST.cl);}
+function goHome(){showScreen("s-home");renderHome();}
+
+
+function renderTheory(lv){
+  const th=TH[lv];
+  document.getElementById("th-title").textContent=`Teoría · Nivel ${lv} — ${DN[lv]}`;
+  const chips=th.chips.map(c=>`<span class="tvis-chip" style="background:${c.bg};color:${c.c}">${c.t}</span>`).join("");
+  document.getElementById("tbody").innerHTML=`
+    <div class="tvis" style="background:${th.bg}"><span class="tvis-ico">${th.ico}</span><div class="tvis-title" style="color:#fff">${th.title}</div><div class="tvis-sub" style="color:rgba(255,255,255,.7)">${th.sub}</div><div class="tvis-chips">${chips}</div></div>
+    <div class="tcards">
+      <div class="tc"><div class="tc-lbl">🎯 CONCEPTO CLAVE</div><div class="tc-txt">${th.concept}</div></div>
+      <div class="tc"><div class="tc-lbl">📖 EXPLICACIÓN</div><div class="tc-txt">${th.text.replace(/\n/g,"<br>")}</div></div>
+      <div class="eg"><div class="eg-l">📌 CASO REAL</div><div class="eg-t">${th.eg}</div></div>
+      <div class="tip"><span>💡</span><span>${th.tip}</span></div>
+    </div>`;
+  document.getElementById("start-btn").onclick=()=>startGames(ST.cg,ST.cl);
+}
+
+function renderHome(){
+  checkU();const done=countDone();
+  document.getElementById("lv-lbl").textContent=`Progreso: ${done}/15 niveles`;
+  document.getElementById("xp-lbl").textContent=`${ST.xp} XP`;
+  document.getElementById("xpf").style.width=Math.round((done/15)*100)+"%";
+  document.getElementById("mlv-lbl").textContent=`Nivel desbloqueado: ${ST.moduleLevel}`;
+  const all5=GAMES.every(g=>ST.progress[g.id][5]==="done");
+  document.getElementById("mlv-sub").textContent=all5?"🏆 ¡Parte A completa! Continuá con la Parte B.":
+    `Completá los 3 juegos del nivel ${ST.moduleLevel} para avanzar`;
+  const list=document.getElementById("glist");list.innerHTML="";
+  GAMES.forEach(g=>{
+    const dc=Object.values(ST.progress[g.id]).filter(v=>v==="done").length;
+    const pips=Array(5).fill(0).map((_,i)=>{const s=ST.progress[g.id][i+1];return`<div class="gpip ${s==="done"?"done":s==="available"?"act":""}"></div>`;}).join("");
+    const card=document.createElement("div");card.className="gcard";
+    card.innerHTML=`<div class="gch" onclick="toggleG('${g.id}')"><div class="gco" style="background:${g.color}">${g.icon}</div><div class="gi"><div class="gtn">${gname(g.id)}</div><div class="gts">${dc}/5 niveles</div><div class="gpips">${pips}</div></div><div class="gcv" id="gc-${g.id}">▼</div></div>
+    <div class="lvlist" id="ll-${g.id}" style="display:none">${g.levels.map((lv,i)=>{const st=ST.progress[g.id][i+1];const lk=st==="locked";const dn=st==="done";return`<div class="lvrow ${lk?"lk":""} " onclick="${lk?"":"openLevel('"+g.id+"',"+(i+1)+")"}" ><div class="lvnum ${dn?"nd":!lk?"na":"nl"}">${dn?"✓":i+1}</div><div class="lvi"><div class="lvn2">${lv.name} <span class="dtag ${DT[i+1]}">${DN[i+1]}</span></div><div class="lvd">+${lv.xp} XP${lk?" · Bloqueado":""}</div>${!lk?`<div class="thpill">📖 Teoría nivel ${i+1}</div>`:""}</div><div class="lvbg ${dn?"bdo":!lk?"bav":"blk"}">${dn?"✓":!lk?"▶":"🔒"}</div></div>`;}).join("")}</div>`;
+    list.appendChild(card);
+  });
+}
+load();renderHome();
+</script>
+</body></html>
