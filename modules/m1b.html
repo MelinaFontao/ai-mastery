@@ -388,7 +388,7 @@ function selTF(ans){
   const stmt=lv.stmts[ST.tfIdx];ST.st++;
   document.getElementById("tbv").disabled=true;document.getElementById("tbf").disabled=true;
   const fb=document.getElementById("fb");
-  if(ans===null){fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>⏱</span><span>Tiempo agotado. ${stmt.exp}</span>`;loseLife(stmt.exp);return;}
+  if(ans===null){fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>⏱</span><span>Tiempo agotado. ${stmt.exp}</span>`;loseLife(stmt.exp);if(ST.lives>0)document.getElementById("nxt").disabled=false;return;}
   if(ans===stmt.ans){
     document.getElementById(ans?"tbv":"tbf").classList.add("correct");ST.sc++;
     fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>✓</span><span>${stmt.exp}</span>`;

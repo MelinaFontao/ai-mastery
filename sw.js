@@ -1,4 +1,4 @@
-const CACHE = 'ai-mastery-v2';
+const CACHE = 'ai-mastery-v3';
 const FILES = [
   '/',
   '/index.html',
@@ -8,6 +8,7 @@ const FILES = [
   '/modules/m2a.html',
   '/modules/m2b.html',
   '/modules/m3a.html',
+  '/modules/write-game.js',
   '/modules/m3b.html',
   '/modules/m4a.html',
   '/modules/m4b.html',

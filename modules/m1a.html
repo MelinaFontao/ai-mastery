@@ -332,7 +332,7 @@ function selQ(sel,correct){
   const q=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1].qs[qIdx];
   const fb=document.getElementById("fb");
   if(sel===correct){document.getElementById("qo"+sel).classList.add("correct");ST.sc++;fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>✓</span><span>${q.fb}</span>`;}
-  else{document.getElementById("qo"+sel).classList.add("wrong");document.getElementById("qo"+correct).classList.add("correct");fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>${q.fb}</span>`;loseLife(q.fb);return;}
+  else{document.getElementById("qo"+sel).classList.add("wrong");document.getElementById("qo"+correct).classList.add("correct");fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>${q.fb}</span>`;loseLife(q.fb);if(ST.lives>0)document.getElementById("nxt").disabled=false;return;}
   document.getElementById("nxt").disabled=false;
 }
 function nextQ(){qIdx++;const lv=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1];if(qIdx<lv.qs.length){const b=document.getElementById("gbody");b.innerHTML="";showQ(lv,b);}else winLv();}
@@ -392,7 +392,7 @@ function chkOrder(){
   document.querySelectorAll(".oitem").forEach((el,i)=>{el.classList.add(lv.items[i]===ST.orderItems[i]?"correct":"wrong");el.draggable=false;});
   const fb=document.getElementById("fb");
   if(ok){ST.sc++;fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>✓</span><span>${lv.fb}</span>`;const btn=document.querySelector(".cbtn");btn.textContent="Finalizar nivel 🏆";btn.className="nbtn";btn.onclick=winLv;}
-  else{fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>El orden no es correcto. Revisá la teoría para encontrar la secuencia.</span>`;loseLife(lv.fb);}
+  else{fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>El orden no es correcto. Revisá la teoría para encontrar la secuencia.</span>`;loseLife(lv.fb);if(ST.lives>0){const obtn=document.querySelector(".cbtn");obtn.textContent="Reintentar ↺";obtn.onclick=()=>doOrder(lv,document.getElementById("gbody"));}}
 }
 function loseLife(hint){
   ST.lives--;renderLives();

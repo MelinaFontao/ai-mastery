@@ -106,10 +106,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;display:
 .upill{background:var(--te-l);border:1px solid var(--te);border-radius:8px;padding:9px 14px;font-size:11px;color:var(--te-d);width:100%;text-align:center;font-weight:500}
 .hbox{background:var(--co-l);border-radius:8px;padding:10px;font-size:11px;color:var(--co-d);line-height:1.6;width:100%}
 .wbox{background:var(--am-l);border-radius:8px;padding:10px;font-size:11px;color:var(--am-d);line-height:1.6;width:100%;text-align:center}
+.tbw{background:var(--te-l);color:var(--te-d)}
+.warea{width:100%;border:1.5px solid #e5e7eb;border-radius:8px;padding:10px 12px;font-size:13px;color:#111;line-height:1.6;resize:vertical;min-height:120px;font-family:inherit;background:#fff;transition:border-color .15s;outline:none}
+.warea:focus{border-color:var(--ac)}.warea:disabled{background:#f9fafb;color:#6b7280}
+.wcnt{font-size:10px;color:#6b7280;text-align:right;margin-top:4px;transition:color .15s}
+.wcnt-ok{color:var(--te)!important}
+.wfb{border-radius:8px;font-size:11px;line-height:1.6;padding:9px 11px;display:flex;gap:6px;align-items:flex-start}
+.wfb:empty{display:none}.wfb-ok{background:var(--te-l);color:var(--te-d)}.wfb-partial{background:var(--am-l);color:var(--am-d)}.wfb-no{background:var(--co-l);color:var(--co-d)}
 </style>
 <div id="app">
 <div class="scr active" id="s-home">
-  <div class="hero"><div style="font-size:44px">✍️</div><h1>Prompts Efectivos — Parte A</h1><p>Módulo 3A · Quiz · Completar · Ordenar · 5 niveles</p><span class="htag">📖 Teoría visual antes de cada nivel</span></div>
+  <div class="hero"><div style="font-size:44px">✍️</div><h1>Prompts Efectivos — Parte A</h1><p>Módulo 3A · Quiz · Completar · Ordenar · Escribir · 5 niveles</p><span class="htag">📖 Teoría visual antes de cada nivel</span></div>
   <div class="xw"><div class="xr"><span id="lv-lbl">Progreso: 0/15 niveles</span><span id="xp-lbl">0 XP</span></div><div class="xb"><div class="xbf" id="xpf" style="width:0%"></div></div></div>
   <div class="lv-banner"><div style="font-size:16px">🏆</div><div><div class="lvt" id="mlv-lbl">Nivel desbloqueado: 1</div><div class="lvs" id="mlv-sub">Completá los 3 juegos del nivel 1 para avanzar</div></div></div>
   <div class="gw"><div class="slbl">MINI-JUEGOS — MÓDULO 2A · PROMPTS EFECTIVOS</div><div id="glist"></div></div>
@@ -143,7 +150,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;display:
 </div>
 <script>
 (function(){var K="aim_m3a";if(localStorage.getItem(K))return;var ul=JSON.parse(localStorage.getItem("aim_unlocked")||'["aim_m1a"]');if(!ul.includes(K)){document.body.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:system-ui;text-align:center;padding:2rem;background:#f9fafb"><div style="font-size:48px;margin-bottom:1rem">🔒</div><div style="font-size:16px;font-weight:600;color:#111;margin-bottom:.5rem">Módulo bloqueado</div><div style="font-size:13px;color:#6b7280;margin-bottom:1.5rem">Completá el módulo anterior para acceder.</div><button onclick="window.parent.postMessage({type:\'back\'},\'*\')" style="background:#7F77DD;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:14px;cursor:pointer">← Volver al Hub</button></div>';}})();
-const DT=["","d1","d2","d3","d4","d5"],DN=["","Fácil","Fácil+","Medio","Difícil","Experto"],GIDS=["quiz","fill","order"];
+const DT=["","d1","d2","d3","d4","d5"],DN=["","Fácil","Fácil+","Medio","Difícil","Experto"],GIDS=["quiz","fill","order","write"];
 const TH={
 1:{bg:"linear-gradient(135deg,#042C53,#0C447C)",ico:"✍️",title:"Los 4 Elementos de un Buen Prompt",sub:"Tarea · Contexto · Ejemplos · Formato",
   chips:[{t:"Tarea",bg:"#E3F0FA",c:"#042C53"},{t:"Contexto",bg:"#E3F0FA",c:"#042C53"},{t:"Ejemplos",bg:"#E3F0FA",c:"#042C53"},{t:"Formato",bg:"#E3F0FA",c:"#042C53"}],
@@ -252,6 +259,73 @@ const GAMES=[
    intro:"Ordená los elementos del system prompt de una aplicación de IA empresarial de más a menos prioritario.",
    items:["Identidad y rol: quién es el asistente, para qué empresa, cuál es su función principal","Restricciones de seguridad: qué no puede decir, hacer o recomendar bajo ninguna circunstancia","Grounding: a qué documentos/datos está limitado para responder, qué hacer si no sabe","Formato de output: cómo debe estructurar sus respuestas (longitud, tono, estructura)","Ejemplos few-shot: casos representativos de respuestas correctas e incorrectas","Instrucciones de escalación: cuándo y cómo derivar a un humano"],
    fb:"¡System prompt empresarial correcto! Identidad → Seguridad → Grounding → Formato → Ejemplos → Escalación. Las restricciones de seguridad van antes que el formato porque definen el espacio de respuestas posibles. El grounding va antes que el formato porque define de dónde puede extraer información. Este orden refleja la prioridad de cada capa."}
+]},
+{id:"write",icon:"✍️",title:"Escribir",color:"#E1F5EE",levels:[
+  {xp:20,name:"Básico",
+   prompt:"Escribí un prompt completo para pedirle a un modelo de IA que redacte 3 opciones de asunto de email para reactivar usuarios inactivos. La empresa es una app de finanzas para freelancers. Usá al menos tarea y contexto.",
+   placeholder:"Escribí tu prompt acá...",
+   minWords:15,
+   hint:"Recordá los 4 elementos: Tarea (qué hacer), Contexto (para quién / situación), Ejemplos y Formato.",
+   criteria:[
+     {kw:"asunto|email|correo|reactivac",label:"el tipo de email a redactar"},
+     {kw:"3|tres",label:"la cantidad de opciones"},
+     {kw:"freelancer|finanz|app|startup",label:"el contexto del negocio"},
+     {kw:"redact|escrib|generi|cre|propon",label:"el verbo de tarea"}
+   ],
+   minRequired:3,
+   fb:"¡Bien! Un buen prompt tiene tarea (verbo + qué hacer), contexto (para quién / situación) y cantidad de outputs. El contexto 'app de finanzas para freelancers' cambia completamente el tono y el lenguaje del email resultante."},
+  {xp:25,name:"Básico+",
+   prompt:"Escribí un system prompt para configurar un asistente de soporte de una fintech argentina. Debe definir: quién es el asistente, en qué idioma responde, al menos una restricción y qué hacer cuando no sabe la respuesta.",
+   placeholder:"Escribí tu system prompt acá...",
+   minWords:25,
+   hint:"Un system prompt fija el comportamiento persistente del asistente: identidad, idioma, límites y protocolo de incertidumbre.",
+   criteria:[
+     {kw:"asistent|sos |actuá|soy ",label:"la identidad del asistente"},
+     {kw:"español|castellano|rioplatense",label:"el idioma de respuesta"},
+     {kw:"no |restrict|limit|evitá|nunca|solo ",label:"una restricción de comportamiento"},
+     {kw:"no sab|no encontr|no tengo|deriv|escal|consul",label:"qué hacer cuando no sabe"}
+   ],
+   minRequired:3,
+   fb:"¡Excelente! Un system prompt bien diseñado tiene 4 capas: identidad (quién es), idioma (cómo habla), restricciones (qué no puede hacer) y protocolo de incertidumbre (qué hace cuando no sabe). Esas capas hacen al asistente predecible y seguro."},
+  {xp:35,name:"Intermedio",
+   prompt:"Escribí un prompt que use Chain-of-Thought para decidir si conviene tercerizar el soporte al cliente de una startup o mantenerlo interno. El prompt debe pedir al modelo que analice factores relevantes ANTES de dar su recomendación.",
+   placeholder:"Escribí tu prompt acá...",
+   minWords:20,
+   hint:"CoT funciona cuando pedís que el modelo muestre los pasos o factores relevantes antes de concluir. La palabra clave es 'antes de recomendar'.",
+   criteria:[
+     {kw:"antes de|antes,|primero analiz|primero evalu|primero lista|antes de recomendar",label:"pedir razonamiento previo a la conclusión"},
+     {kw:"factor|aspecto|considera|analiz|evalu|lista",label:"descomposición del problema en partes"},
+     {kw:"terceriz|terceri|outsourc|interno|inhouse",label:"el tema a analizar"},
+     {kw:"recomend|conclu|decid|sugeri",label:"pedido de conclusión final"}
+   ],
+   minRequired:3,
+   fb:"¡Correcto! La clave de CoT está en pedir que el modelo muestre su razonamiento ANTES de concluir. 'Antes de recomendar, analizá estos factores...' produce respuestas auditables y útiles. El razonamiento visible permite detectar dónde falla la lógica antes de aceptar la recomendación."},
+  {xp:50,name:"Avanzado",
+   prompt:"Escribí un prompt few-shot para clasificar comentarios de clientes de una app de delivery en: positivo, negativo o neutro. Incluí al menos 2 ejemplos concretos de (comentario → categoría) en el cuerpo del prompt.",
+   placeholder:"Escribí tu prompt con los ejemplos incluidos...",
+   minWords:25,
+   hint:"Few-shot = mostrás ejemplos dentro del prompt. Formato típico: 'Comentario: [texto] → Categoría: positivo/negativo/neutro'.",
+   criteria:[
+     {kw:"positiv",label:"la categoría 'positivo' con ejemplo"},
+     {kw:"negativ",label:"la categoría 'negativo' con ejemplo"},
+     {kw:"neutro|neutral",label:"la categoría 'neutro'"},
+     {kw:"comentario|input|ejemplo|texto:",label:"la estructura ejemplo→resultado"}
+   ],
+   minRequired:3,
+   fb:"¡Bien! El few-shot transmite el criterio por demostración, no por descripción. Dos o tres ejemplos bien elegidos —especialmente los casos borderline— valen más que un párrafo explicando las categorías. El modelo aprende el patrón por analogía."},
+  {xp:60,name:"Experto",
+   prompt:"Escribí un prompt para analizar un contrato de servicios que minimice las alucinaciones. El prompt debe: anclar el modelo al documento fuente, pedir evidencia textual para cada afirmación, y definir qué hacer si la información no está en el contrato.",
+   placeholder:"Escribí tu prompt anti-alucinaciones acá...",
+   minWords:25,
+   hint:"Las tres capas anti-alucinación: grounding (al documento), evidencia (cita textual) y protocolo de incertidumbre (qué hacer si no está).",
+   criteria:[
+     {kw:"document|contrato|texto|adjunt|fuente",label:"el anclaje al documento fuente"},
+     {kw:"cita|textual|párrafo|cláusula|evidencia|literal",label:"el pedido de evidencia textual"},
+     {kw:"no encontr|no aparece|no está|no figure|no se mencion|no tengo",label:"el protocolo para información ausente"},
+     {kw:"solo |únicamente|basándote|basate|exclusivamente",label:"la restricción explícita de fuente"}
+   ],
+   minRequired:3,
+   fb:"¡Experto! Las tres capas anti-alucinación juntas: grounding (al documento), evidencia (cita textual) y protocolo de incertidumbre (qué hacer si no está). Combinadas, reducen drásticamente el espacio donde el modelo puede inventar. En entornos legales, financieros o médicos, esta técnica es esencial."}
 ]}
 ];
 let ST={progress:{},xp:0,moduleLevel:1,cg:null,cl:null,lives:3,sc:0,st:0,fillSel:[],orderItems:[],orderDragging:null};
@@ -263,16 +337,17 @@ function checkU(){for(let lv=1;lv<=4;lv++){if(GAMES.every(g=>ST.progress[g.id][l
 function resetLvl(lv){GAMES.forEach(g=>{if(ST.progress[g.id][lv]!=="done")ST.progress[g.id][lv]="available";});}
 function countDone(){return Object.values(ST.progress).reduce((a,g)=>a+Object.values(g).filter(v=>v==="done").length,0);}
 function xpFor(gid,lv){return GAMES.find(g=>g.id===gid).levels[lv-1].xp;}
-function gname(id){return id==="quiz"?"Quiz":id==="fill"?"Completar":"Ordenar";}
+function gname(id){return id==="quiz"?"Quiz":id==="fill"?"Completar":id==="write"?"Escribir":"Ordenar";}
 function renderHome(){
   checkU();const done=countDone();
-  document.getElementById("lv-lbl").textContent=`Progreso: ${done}/15 niveles`;
+  const totLv=GAMES.reduce((a,g)=>a+g.levels.length,0);
+  document.getElementById("lv-lbl").textContent=`Progreso: ${done}/${totLv} niveles`;
   document.getElementById("xp-lbl").textContent=`${ST.xp} XP`;
-  document.getElementById("xpf").style.width=Math.round((done/15)*100)+"%";
+  document.getElementById("xpf").style.width=Math.round((done/totLv)*100)+"%";
   document.getElementById("mlv-lbl").textContent=`Nivel desbloqueado: ${ST.moduleLevel}`;
   const all5=GAMES.every(g=>ST.progress[g.id][5]==="done");
   document.getElementById("mlv-sub").textContent=all5?"🏆 ¡Parte A completa! Continuá con M3B.":
-    `Completá los 3 juegos del nivel ${ST.moduleLevel} para avanzar`;
+    `Completá los ${GIDS.length} juegos del nivel ${ST.moduleLevel} para avanzar`;
   const list=document.getElementById("glist");list.innerHTML="";
   GAMES.forEach(g=>{
     const dc=Object.values(ST.progress[g.id]).filter(v=>v==="done").length;
@@ -310,7 +385,7 @@ function renderLv(){
   renderLives();document.getElementById("g-prog").style.width="0%";
   const game=GAMES.find(g=>g.id===ST.cg);const lv=game.levels[ST.cl-1];
   const body=document.getElementById("gbody");body.innerHTML="";
-  if(ST.cg==="quiz")doQuiz(lv,body);else if(ST.cg==="fill")doFill(lv,body);else doOrder(lv,body);
+  if(ST.cg==="quiz")doQuiz(lv,body);else if(ST.cg==="fill")doFill(lv,body);else if(ST.cg==="write")doWrite(lv,body);else doOrder(lv,body);
 }
 function doQuiz(lv,body){qIdx=0;showQ(lv,body);}
 function showQ(lv,body){
@@ -330,7 +405,7 @@ function selQ(sel,correct){
   const q=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1].qs[qIdx];
   const fb=document.getElementById("fb");
   if(sel===correct){document.getElementById("qo"+sel).classList.add("correct");ST.sc++;fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>✓</span><span>${q.fb}</span>`;}
-  else{document.getElementById("qo"+sel).classList.add("wrong");document.getElementById("qo"+correct).classList.add("correct");fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>${q.fb}</span>`;loseLife(q.fb);return;}
+  else{document.getElementById("qo"+sel).classList.add("wrong");document.getElementById("qo"+correct).classList.add("correct");fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>${q.fb}</span>`;loseLife(q.fb);if(ST.lives>0)document.getElementById("nxt").disabled=false;return;}
   document.getElementById("nxt").disabled=false;
 }
 function nextQ(){qIdx++;const lv=GAMES.find(g=>g.id===ST.cg).levels[ST.cl-1];if(qIdx<lv.qs.length){const b=document.getElementById("gbody");b.innerHTML="";showQ(lv,b);}else winLv();}
@@ -386,7 +461,7 @@ function chkOrder(){
   document.querySelectorAll(".oitem").forEach((el,i)=>{el.classList.add(lv.items[i]===ST.orderItems[i]?"correct":"wrong");el.draggable=false;});
   const fb=document.getElementById("fb");
   if(ok){ST.sc++;fb.className="fb fbok";fb.style.display="flex";fb.innerHTML=`<span>✓</span><span>${lv.fb}</span>`;const btn=document.querySelector(".cbtn");btn.textContent="Finalizar nivel 🏆";btn.className="nbtn";btn.onclick=winLv;}
-  else{fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>El orden no es correcto.</span>`;loseLife(lv.fb);}
+  else{fb.className="fb fbno";fb.style.display="flex";fb.innerHTML=`<span>✗</span><span>El orden no es correcto.</span>`;loseLife(lv.fb);if(ST.lives>0){const obtn=document.querySelector(".cbtn");obtn.textContent="Reintentar ↺";obtn.onclick=()=>doOrder(lv,document.getElementById("gbody"));}}
 }
 function loseLife(hint){
   ST.lives--;renderLives();
@@ -428,3 +503,4 @@ function goHome(){showScreen("s-home");renderHome();}
 function showScreen(n){document.querySelectorAll(".scr").forEach(s=>s.classList.remove("active"));document.getElementById(n).classList.add("active");}
 load();renderHome();
 </script>
+<script src="/modules/write-game.js"></script>
