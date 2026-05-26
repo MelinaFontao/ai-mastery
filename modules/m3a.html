@@ -495,7 +495,7 @@ function winLv(){
   const nextAvail=GIDS.find(g=>ST.progress[g][lv]==="available");
   if(nextAvail&&nextAvail!==gid){nb.textContent=`Siguiente juego →`;nb.onclick=()=>startGames(nextAvail,lv);}
   else if(lv<5&&GAMES.every(g=>ST.progress[g.id][lv]==="done")){nb.textContent=`Ver teoría nivel ${lv+1} 📖`;nb.onclick=()=>openLevel(GIDS[0],lv+1);}
-  else{nb.textContent="Ver módulo ↗";nb.onclick=goHome;}
+  else{nb.textContent="Continuar a Parte B →";nb.onclick=()=>window.parent.postMessage({type:"openNext"},"*");}
   showScreen("s-win");
 }
 function retryLv(){const fa=GIDS.find(gid=>ST.progress[gid][ST.cl]==="available")||GIDS[0];startGames(fa,ST.cl);}

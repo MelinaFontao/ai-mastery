@@ -291,6 +291,7 @@ function renderHub(){
 // ── NAVEGACIÓN ────────────────────────────────────────
 function openMod(file,title,key){
   if(key&&!isPartUnlocked(key))return;
+  saveUnlockedList();
   document.getElementById("mod-nav-title").textContent=title;
   document.getElementById("mod-frame").src=file;
   document.getElementById("view-hub").classList.remove("active");
@@ -305,8 +306,26 @@ function backToHub(){
   renderHub();
 }
 
-// Escuchar mensaje "back" desde módulos bloqueados abiertos directamente
-window.addEventListener("message",e=>{if(e.data&&e.data.type==="back")backToHub();});
+// Escuchar mensajes desde módulos
+window.addEventListener("message",e=>{
+  if(!e.data)return;
+  if(e.data.type==="back")backToHub();
+  if(e.data.type==="openNext"){
+    const currentSrc=document.getElementById("mod-frame").src;
+    const currentPart=ALL_PARTS.find(p=>currentSrc.endsWith(p.file));
+    if(!currentPart)return;
+    const idx=UNLOCK_ORDER.indexOf(currentPart.key);
+    if(idx<0||idx>=UNLOCK_ORDER.length-1)return;
+    const nextKey=UNLOCK_ORDER[idx+1];
+    const nextPart=ALL_PARTS.find(p=>p.key===nextKey);
+    if(!nextPart)return;
+    saveUnlockedList();
+    if(!isPartUnlocked(nextKey))return;
+    const mod=MODS.find(m=>m.parts.some(p=>p.key===nextKey));
+    const title=mod?mod.title+" — Parte "+nextPart.lbl:"Módulo";
+    openMod(nextPart.file,title,nextKey);
+  }
+});
 
 // ── SERVICE WORKER ────────────────────────────────────
 if('serviceWorker' in navigator){
