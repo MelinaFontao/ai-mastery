@@ -205,6 +205,12 @@ function getLv(xp){return LEVELS.reduce((a,l)=>xp>=l.xp?l:a,LEVELS[0]);}
 function getNextLv(xp){return LEVELS.find(l=>l.xp>xp)||LEVELS[LEVELS.length-1];}
 
 function isPartUnlocked(key){
+  // B parts unlock together with their A part (same module)
+  const mod=MODS.find(m=>m.parts.some(p=>p.key===key));
+  if(mod&&mod.parts.length>1&&mod.parts.findIndex(p=>p.key===key)>0){
+    return isPartUnlocked(mod.parts[0].key);
+  }
+  // A parts (and single-part modules) use the sequential UNLOCK_ORDER
   const idx=UNLOCK_ORDER.indexOf(key);
   if(idx<=0)return true;
   const prevKey=UNLOCK_ORDER[idx-1];
@@ -214,12 +220,7 @@ function isPartUnlocked(key){
 }
 
 function saveUnlockedList(){
-  const ul=UNLOCK_ORDER.filter((_,i)=>{
-    if(i===0)return true;
-    const prevKey=UNLOCK_ORDER[i-1];
-    const prevPart=ALL_PARTS.find(p=>p.key===prevKey);
-    return prevPart?readPart(prevKey,prevPart.maxLv).complete:true;
-  });
+  const ul=UNLOCK_ORDER.filter(key=>isPartUnlocked(key));
   try{localStorage.setItem("aim_unlocked",JSON.stringify(ul));}catch(e){}
 }
 

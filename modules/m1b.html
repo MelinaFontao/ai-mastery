@@ -145,7 +145,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;display:
 </div>
 </div>
 <script>
-(function(){var K="aim_m1b";var P="aim_m1a";if(localStorage.getItem(K))return;var d=null;try{d=JSON.parse(localStorage.getItem(P)||'null');}catch(e){}var ok=d&&d.progress&&Object.values(d.progress).every(function(g){return g[5]==="done";});if(!ok){document.body.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:system-ui;text-align:center;padding:2rem;background:#f9fafb"><div style="font-size:72px;margin-bottom:1rem">🔒</div><div style="font-size:24px;font-weight:600;color:#111;margin-bottom:.5rem">Módulo bloqueado</div><div style="font-size:20px;color:#6b7280;margin-bottom:1.5rem">Completá el módulo anterior para acceder.</div><button onclick="window.parent.postMessage({type:\'back\'},\'*\')" style="background:#7F77DD;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:21px;cursor:pointer">← Volver al Hub</button></div>';}})();
+(function(){var K="aim_m1b";if(localStorage.getItem(K))return;})();;
 const DT=["","d1","d2","d3","d4","d5"],DN=["","Fácil","Fácil+","Medio","Difícil","Experto"],GIDS=["tf","build"];
 const TH={
 1:{bg:"linear-gradient(135deg,#0d1a2e,#1a3a5e)",ico:"🔥",title:"La era del Deep Learning",sub:"Cómo las redes neuronales conquistaron el mundo — 2012 a 2016",
