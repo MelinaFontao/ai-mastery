@@ -265,8 +265,8 @@ function renderHub(){
       const partsHtml=mod.parts.map((p,i)=>{
         const d=pd[i];
         const partLocked=!isPartUnlocked(p.key);
-        const c=partLocked?"pp-lock":d.complete?"pp-done":d.done>0?"pp-prog":"pp-prog";
-        const ic=partLocked?"🔒":d.complete?"✓":d.done>0?"▶":"▶";
+        const c=partLocked?"pp-lock":allDone&&d.complete?"pp-done":d.done>0?"pp-prog":"";
+        const ic=partLocked?"🔒":allDone&&d.complete?"✓":d.done>0?"▶":"○";
         const lbl=mod.parts.length===1?"Módulo":p.lbl;
         const detail=!d.complete&&d.done>0?` (${d.done}/${p.maxLv})`:"";
         if(partLocked)return`<span class="pp ${c}">${ic} ${lbl}</span>`;
