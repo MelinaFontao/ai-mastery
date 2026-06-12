@@ -241,7 +241,7 @@ const GAMES=[
 ];
 let ST={progress:{},xp:0,moduleLevel:1,cg:null,cl:null,lives:3,sc:0,st:0,tfIdx:0,tfScore:0,tfTimer:null,buildSel:[]};
 let tfTimeLeft=15;
-function initProg(){GAMES.forEach(g=>{if(!ST.progress[g.id])ST.progress[g.id]={};for(let i=1;i<=5;i++){if(!ST.progress[g.id][i])ST.progress[g.id][i]=i===1?"available":"locked";}});}
+function initProg(){GAMES.forEach(g=>{if(!ST.progress[g.id])ST.progress[g.id]={};for(let i=1;i<=5;i++){if(!ST.progress[g.id][i]||ST.progress[g.id][i]==="locked")ST.progress[g.id][i]="available";}});}
 function load(){try{const d=localStorage.getItem("aim_m3b");if(d)Object.assign(ST,JSON.parse(d));}catch(e){}initProg();}
 function save(){try{localStorage.setItem("aim_m3b",JSON.stringify({progress:ST.progress,xp:ST.xp,moduleLevel:ST.moduleLevel,lastDate:new Date().toDateString()}));}catch(e){}}
 function checkU(){for(let lv=1;lv<=4;lv++){if(GAMES.every(g=>ST.progress[g.id][lv]==="done")){GAMES.forEach(g=>{if(ST.progress[g.id][lv+1]==="locked")ST.progress[g.id][lv+1]="available";});if(lv+1>ST.moduleLevel)ST.moduleLevel=lv+1;}}}

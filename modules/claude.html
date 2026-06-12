@@ -218,7 +218,7 @@ const DT=["","d1","d2","d3","d4","d5"],DN=["","Fácil","Fácil+","Medio","Difíc
 const GIDS=["quiz","fill","order","tf","build"];
 let ST={progress:{},xp:0,moduleLevel:1,cg:null,cl:null,lives:3,sc:0,st:0,fillSel:[],orderItems:[],orderDragging:null,tfIdx:0,tfScore:0,tfTimer:null,buildSel:[]};
 let qIdx=0,tfTimeLeft=15;
-function initProg(){GAMES.forEach(g=>{if(!ST.progress[g.id])ST.progress[g.id]={};for(let i=1;i<=5;i++){if(!ST.progress[g.id][i])ST.progress[g.id][i]=i===1?"available":"locked";}});}
+function initProg(){GAMES.forEach(g=>{if(!ST.progress[g.id])ST.progress[g.id]={};for(let i=1;i<=5;i++){if(!ST.progress[g.id][i]||ST.progress[g.id][i]==="locked")ST.progress[g.id][i]="available";}});}
 function checkU(){for(let lv=1;lv<=4;lv++){if(GAMES.every(g=>ST.progress[g.id][lv]==="done")){GAMES.forEach(g=>{if(ST.progress[g.id][lv+1]==="locked")ST.progress[g.id][lv+1]="available";});if(lv+1>ST.moduleLevel)ST.moduleLevel=lv+1;}}}
 function resetLvl(lv){GAMES.forEach(g=>{if(ST.progress[g.id][lv]!=="done")ST.progress[g.id][lv]="available";});}
 function countDone(){return Object.values(ST.progress).reduce((a,g)=>a+Object.values(g).filter(v=>v==="done").length,0);}
