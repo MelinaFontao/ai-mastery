@@ -1,4 +1,4 @@
-const CACHE = 'ai-mastery-v10';
+const CACHE = 'ai-mastery-v11';
 const FILES = [
   '/',
   '/index.html',
